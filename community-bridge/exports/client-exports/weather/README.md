@@ -1,6 +1,0 @@
----
-icon: sun
----
-
-# Weather
-

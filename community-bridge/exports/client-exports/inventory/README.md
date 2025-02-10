@@ -1,6 +1,0 @@
----
-icon: box
----
-
-# Inventory
-

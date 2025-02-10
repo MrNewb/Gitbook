@@ -1,6 +1,0 @@
----
-icon: door-closed
----
-
-# Doorlock
-

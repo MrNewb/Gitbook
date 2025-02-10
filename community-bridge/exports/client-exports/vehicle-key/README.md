@@ -1,6 +1,0 @@
----
-icon: car
----
-
-# Vehicle Key
-

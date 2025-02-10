@@ -1,6 +1,0 @@
----
-icon: list-dropdown
----
-
-# Menu
-

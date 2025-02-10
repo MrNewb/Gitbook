@@ -1,6 +1,0 @@
----
-icon: keyboard
----
-
-# Input
-

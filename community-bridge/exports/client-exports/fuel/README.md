@@ -1,6 +1,0 @@
----
-icon: gas-pump
----
-
-# Fuel
-
