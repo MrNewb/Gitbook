@@ -30,6 +30,8 @@ Why do my keys say null when spawning my car?&#x20;
 
 
 This is because you need to add the text entry for the vehicles based on model. (hit z while in a custom car that does that and you will see the name isn't provided in game).
+
+I have included a way to correct this for you in the config.
 {% endhint %}
 
 {% hint style="success" %}
@@ -51,6 +53,6 @@ https://i.ibb.co/DgWRhYj/keyosimg.png
 {% hint style="warning" %}
 Do you have backwards compatibility with qb-vehiclekeys?
 
-Yes, but it is recommended to avoid using these events due to the way they are used. Traditional key systems pass a generic string and it wouldnt matter if an entity exsists or not, with mine keys \*must\* be grated after an entity exsists.
+Yes, but it is recommended to avoid using these events due to the way they are used. Traditional key systems pass a generic string and it wouldn't matter if an entity exists or not, with mine keys \*must\* be grated after an entity exists.
 {% endhint %}
 
