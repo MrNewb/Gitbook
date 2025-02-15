@@ -1,14 +1,14 @@
 ---
+icon: poop
 description: >-
   To install MrNewbVehicleKeys to the core you will need use this snippet, This
   will need to be adjusted in any third party admin menus in a similar method.
-icon: poop
 ---
 
 # qbox
 
 ```
-Step #1 Edit GiveKeys
+Step #1 GiveKeys
 ```
 
 ```lua
@@ -22,10 +22,10 @@ Step #1 Edit GiveKeys
 ```lua
 -- Paste this in in its place
 
-giveVehicleKeys = function(src, plate, vehicle)
-    local netId = NetworkGetNetworkIdFromEntity(vehicle)
-    return exports.MrNewbVehicleKeys:GiveKeys(src, netId)
-end,
+    giveVehicleKeys = function(src, plate, vehicle)
+        local netId = NetworkGetNetworkIdFromEntity(vehicle)
+        return exports.MrNewbVehicleKeys:GiveKeys(src, netId)
+    end,
 ```
 
 ***
@@ -50,7 +50,6 @@ Step #2 hasKeys
     hasKeys = function(plate, vehicle)
         if DoesEntityExist(vehicle) then return exports.MrNewbVehicleKeys:HaveKeys(vehicle) end
         return false
-        --return exports.qbx_vehiclekeys:HasKeys(vehicle)
     end,
 ```
 

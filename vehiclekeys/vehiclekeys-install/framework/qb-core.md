@@ -1,6 +1,6 @@
 ---
-description: To install MrNewbVehicleKeys to the core you will need use this snippet
 icon: faucet-drip
+description: To install MrNewbVehicleKeys to the core you will need use this snippet
 ---
 
 # qb-core
@@ -69,7 +69,64 @@ end)
 
 
 ```
-Step #2 Go to qb-core/shared/items.lua and paste this in
+Step #2 RemoveKeys for /dv
+```
+
+```lua
+-- Find This in qb-core/client/events.lua aprox around line 144
+
+RegisterNetEvent('QBCore:Command:DeleteVehicle', function()
+    local ped = PlayerPedId()
+    local veh = GetVehiclePedIsUsing(ped)
+    if veh ~= 0 then
+        SetEntityAsMissionEntity(veh, true, true)
+        DeleteVehicle(veh)
+    else
+        local pcoords = GetEntityCoords(ped)
+        local vehicles = GetGamePool('CVehicle')
+        for _, v in pairs(vehicles) do
+            if #(pcoords - GetEntityCoords(v)) <= 5.0 then
+                SetEntityAsMissionEntity(v, true, true)
+                DeleteVehicle(v)
+            end
+        end
+    end
+end)
+```
+
+```
+-- Paste this in in its place
+```
+
+```lua
+-- Paste this in in its place
+
+RegisterNetEvent('QBCore:Command:DeleteVehicle', function()
+    local ped = PlayerPedId()
+    local veh = GetVehiclePedIsUsing(ped)
+    if veh ~= 0 then
+        exports.MrNewbVehicleKeys:RemoveKeys(veh)
+        SetEntityAsMissionEntity(veh, true, true)
+        DeleteVehicle(veh)
+    else
+        local pcoords = GetEntityCoords(ped)
+        local vehicles = GetGamePool('CVehicle')
+        for _, v in pairs(vehicles) do
+            if #(pcoords - GetEntityCoords(v)) <= 5.0 then
+                exports.MrNewbVehicleKeys:RemoveKeys(v)
+                SetEntityAsMissionEntity(v, true, true)
+                DeleteVehicle(v)
+            end
+        end
+    end
+end)
+
+```
+
+***
+
+```
+Step #3 Go to qb-core/shared/items.lua and paste this in
 ```
 
 ```lua
