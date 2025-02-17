@@ -1,6 +1,6 @@
 ---
-description: Install Guide
 icon: wrench
+description: Install Guide
 ---
 
 # Install
@@ -20,3 +20,7 @@ ensure MrNewbPlateCarriers
 ```
 
 Please note, this is an example. Please do not put this in your config file like this.
+
+
+
+[https://github.com/The-Order-Of-The-Sacred-Framework/community\_bridge](https://github.com/The-Order-Of-The-Sacred-Framework/community_bridge)
