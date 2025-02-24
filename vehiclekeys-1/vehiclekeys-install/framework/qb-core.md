@@ -1,11 +1,11 @@
 ---
-description: Add this to qb-core/shared/items.lua
 icon: faucet-drip
+description: Add this to qb-core/shared/items.lua
 ---
 
 # qb-core
 
-```
+```lua
     ['merryweather_strike_carrier']         = {['name'] = 'merryweather_strike_carrier',        ['label'] = 'Merryweather Strike Carrier',          ['weight'] = 2000,      ['type'] = 'item',      ['image'] = 'merryweather_strike_carrier.png',          ['unique'] = true, ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'Tactical carrier from Merryweather Security, designed for mercenary operations.'},
     ['pegasus_vanguard_carrier']            = {['name'] = 'pegasus_vanguard_carrier',           ['label'] = 'Pegasus Vanguard Carrier',             ['weight'] = 1500,      ['type'] = 'item',      ['image'] = 'pegasus_vanguard_carrier.png',             ['unique'] = true, ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'A high-end tactical carrier from Pegasus for elite protection.'},
     ['fib_specops_carrier']                 = {['name'] = 'fib_specops_carrier',                ['label'] = 'FIB SpecOps Carrier',                  ['weight'] = 2500,      ['type'] = 'item',      ['image'] = 'fib_specops_carrier.png',                  ['unique'] = true, ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'Special operations carrier for the FIB, offering high protection for covert missions.'},
