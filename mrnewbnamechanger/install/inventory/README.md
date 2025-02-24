@@ -2,7 +2,5 @@
 icon: box
 ---
 
-# inventory
+# Inventory
 
-```
-```
