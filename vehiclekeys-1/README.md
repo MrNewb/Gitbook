@@ -1,14 +1,10 @@
 ---
-description: >-
-  Script install, export and usage documentation for the MrNewbVehicleKeys
-  script.
-icon: key
+icon: shield
+description: Script install, export and usage documentation for MrNewbPlateCarriers.
 ---
 
-# BETA UPDATE MrNewbVehicleKeys
+# MrNewbPlateCarriers
 
-<figure><img src="../.gitbook/assets/final.png" alt=""><figcaption><p>It does key stuff</p></figcaption></figure>
 
-{% embed url="https://youtu.be/BEhaiTWnDwc" %}
-Video Showcase
-{% endembed %}
+
+<figure><img src="../.gitbook/assets/NEWBTEMPLATE.jpg" alt=""><figcaption></figcaption></figure>

@@ -4,12 +4,28 @@ description: This is a list of the available client side exports.
 
 # Client Exports
 
+## GiveKeysByPlate
+
+```lua
+-- plate is a string of the vehicles plate
+local plate = "platenumberhere"
+exports.MrNewbVehicleKeys:GiveKeysByPlate(plate)
+```
+
 ## GiveKeys
 
 ```lua
 -- vehicle: This would be the vehicle entity
 
 exports.MrNewbVehicleKeys:GiveKeys(vehicle)
+```
+
+## RemoveKeysByPlate
+
+```lua
+-- plate is a string of the vehicles plate
+local plate = "platenumberhere"
+exports.MrNewbVehicleKeys:RemoveKeysByPlate(plate)
 ```
 
 ## RemoveKeys
@@ -26,6 +42,14 @@ exports.MrNewbVehicleKeys:RemoveKeys(vehicle)
 <strong>
 </strong><strong>exports.MrNewbVehicleKeys:GetVehicleState()
 </strong></code></pre>
+
+## HasKeysByPlate
+
+```lua
+local plate = "platenumberhere"
+local haskeys = exports.MrNewbVehicleKeys:HasKeysByPlate(plate)
+print(haskeys) -- will be bool
+```
 
 ## HaveKeys
 

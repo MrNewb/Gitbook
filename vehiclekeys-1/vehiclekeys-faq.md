@@ -9,11 +9,9 @@ icon: newspaper
 ## Why is the car still on when I get out?
 
 {% hint style="success" %}
-Vehicles will remain on when getting out of them, this is an intended feature that adds to immersion.&#x20;
+Vehicles will remain on when getting out of them, this is an intended feature that adds to immersion but is available to change in the config.&#x20;
 
 
-
-Most huds feature an engine toggle that you can use to turn the vehicle off before exiting or with the keyfob. If you dont have this option I have included an optional one.
 {% endhint %}
 
 {% hint style="success" %}
@@ -39,7 +37,9 @@ Do lockpicks work?&#x20;
 
 
 
-Yes, these are registered as usable items located in the framework bridge for "lockpick" and "advancedlockpick".
+Yes, these are registered as usable items located in the init file for "lockpick" and "advancedlockpick".
+
+If you use a house robbery that registers it then that one will take priority but the codes open.
 {% endhint %}
 
 {% hint style="success" %}
@@ -53,6 +53,6 @@ https://i.ibb.co/DgWRhYj/keyosimg.png
 {% hint style="warning" %}
 Do you have backwards compatibility with qb-vehiclekeys?
 
-Yes, but it is recommended to avoid using these events due to the way they are used. Traditional key systems pass a generic string and it wouldn't matter if an entity exists or not, with mine keys \*must\* be grated after an entity exists.
+Yes, but it is recommended to avoid using these events due to the way they are used.&#x20;
 {% endhint %}
 
