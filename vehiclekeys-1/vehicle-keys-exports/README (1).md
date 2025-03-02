@@ -1,6 +1,0 @@
----
-icon: file-export
----
-
-# Exports
-

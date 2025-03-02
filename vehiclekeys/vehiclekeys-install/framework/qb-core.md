@@ -1,6 +1,6 @@
 ---
-icon: faucet-drip
 description: To install MrNewbVehicleKeys to the core you will need use this snippet
+icon: faucet-drip
 ---
 
 # qb-core
@@ -130,7 +130,11 @@ Step #3 Go to qb-core/shared/items.lua and paste this in
 ```
 
 ```lua
-['vehiclekeys'] 		  = {['name'] = 'vehiclekeys', 	['label'] = 'Vehicle Keys', 	['weight'] = 100, 	    ['type'] = 'item', 		['image'] = 'vehiclekeys.png', ['unique'] = true, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Fancy vehicle keys'},
+['vehiclekeys'] 		= {['name'] = 'vehiclekeys', 			['label'] = 'Vehicle Keys', 			['weight'] = 100, ['type'] = 'item', ['image'] = 'vehiclekeys.png', 		['unique'] = true, 	['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'Fancy vehicle keys'},
+['keyring'] 			= {['name'] = 'keyring', 				['label'] = 'Keyring', 					['weight'] = 220, ['type'] = 'item', ['image'] = 'keyring.png', 			['unique'] = false, ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'A keyring that holds car keys.'},
+['aftermarket_locks'] 	= {['name'] = 'aftermarket_locks', 		['label'] = 'Aftermarket Lock System',  ['weight'] = 220, ['type'] = 'item', ['image'] = 'aftermarket_locks.png', 	['unique'] = false, ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'A locksystem to replace locks in a car.'},
+['lockpick'] 			= {['name'] = 'lockpick', 				['label'] = 'Lockpick', 		 		['weight'] = 850, ['type'] = 'item', ['image'] = 'lockpick.png', 			['unique'] = false, ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'A mysterious device.'},
+['advancedlockpick'] 	= {['name'] = 'advancedlockpick', 		['label'] = 'Advanced Lockpick', 		['weight'] = 850, ['type'] = 'item', ['image'] = 'advancedlockpick.png', 	['unique'] = false, ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'A upgraded mysterious device.'},
 ```
 
 Please note, if you are using an alternative admin menu that registers the command /car you will need to add my exports there as well.

@@ -1,8 +1,8 @@
 ---
-icon: poop
 description: >-
   To install MrNewbVehicleKeys to the core you will need use this snippet, This
   will need to be adjusted in any third party admin menus in a similar method.
+icon: poop
 ---
 
 # qbox
