@@ -19,6 +19,7 @@
     * [Server Exports](vehiclekeys/vehicle-keys-exports/server-exports.md)
     * [Client Exports](vehiclekeys/vehicle-keys-exports/client-exports.md)
   * [FAQ](vehiclekeys/vehiclekeys-faq.md)
+  * [Commands](vehiclekeys/vehiclekeys-faq-1.md)
   * [Snippet Examples](vehiclekeys/vehiclekeys-snippets/README.md)
     * [qb-vehicleshop](vehiclekeys/vehiclekeys-snippets/qb-vehicleshop.md)
     * [qb-garages](vehiclekeys/vehiclekeys-snippets/qb-garages.md)
