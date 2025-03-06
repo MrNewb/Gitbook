@@ -15,6 +15,7 @@
       * [esx](vehiclekeys/vehiclekeys-install/framework/esx.md)
       * [qb-core](vehiclekeys/vehiclekeys-install/framework/qb-core.md)
       * [qbox](vehiclekeys/vehiclekeys-install/framework/qbox.md)
+    * [Inventory Images](vehiclekeys/vehiclekeys-install/inventory-images.md)
   * [Exports](vehiclekeys/vehicle-keys-exports/README.md)
     * [Server Exports](vehiclekeys/vehicle-keys-exports/server-exports.md)
     * [Client Exports](vehiclekeys/vehicle-keys-exports/client-exports.md)
