@@ -51,6 +51,7 @@
     * [inventory](vehiclekeys-1/vehiclekeys-install/inventory/README.md)
       * [🐂 ox\_inventory](vehiclekeys-1/vehiclekeys-install/inventory/ox_inventory.md)
       * [qb-inventoryv2](vehiclekeys-1/vehiclekeys-install/inventory/qb-inventoryv2.md)
+  * [Inventory Images](vehiclekeys-1/inventory-images.md)
   * [Exports](vehiclekeys-1/vehicle-keys-exports/README.md)
     * [Server Exports](vehiclekeys-1/vehicle-keys-exports/server-exports.md)
 * [MrNewbCustomPlates](mrnewbcustomplates/README.md)
