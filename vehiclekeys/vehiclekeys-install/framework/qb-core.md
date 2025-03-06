@@ -138,8 +138,6 @@ version you use I have added both qbs old and new formats
 ['advancedlockpick'] 	        = {['name'] = 'advancedlockpick', 		['label'] = 'Advanced Lockpick', 		['weight'] = 850, ['type'] = 'item', ['image'] = 'advancedlockpick.png', 	['unique'] = false,     ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'A upgraded mysterious device.'},
 
 
-
-
 vehiclekeys                  = { name = 'vehiclekeys',              label = 'Vehicle Keys',             weight = 100, type = 'item', image = 'vehiclekeys.png',         unique = true,     useable = true, shouldClose = true, combinable = nil, description = 'Fancy vehicle keys' },
 keyring                      = { name = 'keyring',                  label = 'Vehicle Key Ring',         weight = 100, type = 'item', image = 'keyring.png',             unique = true,     useable = true, shouldClose = true, combinable = nil, description = 'A keyring to solve all problems.' },
 aftermarket_locks            = { name = 'aftermarket_locks',        label = 'Aftermarket Lock System',  weight = 100, type = 'item', image = 'aftermarket_locks.png',   unique = true,     useable = true, shouldClose = true, combinable = nil, description = 'A Vehicle Lock System To Replace Key Systems' },
