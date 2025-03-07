@@ -9,9 +9,13 @@ FAQ
 
 <details>
 
-<summary>Why is the car still on when I get out?</summary>
+<summary><em><strong>Why is the car still on when I get out?</strong></em></summary>
 
-Vehicles will remain on when getting out of them, this is an intended feature that adds to immersion but is available to change in the config.&#x20;
+### **This is a preference available in the config, search for**&#x20;
+
+```lua
+EngineRemainsOnWhenExiting = false,									-- set this to true to keep a vehicle running when exiting it, this is a more realistic approach where youd have to turn it off when getting out or leave it on if you want to plan an escape etc.
+```
 
 </details>
 
@@ -19,7 +23,9 @@ Vehicles will remain on when getting out of them, this is an intended feature th
 
 <summary>How do I make my script work with keys?</summary>
 
-If you are running into issues on compatibility please make a ticket in the discord and we will try to help. The exports are also available on this documentation page.
+You will need to add the exports for the key grants, please see the export documentation.
+
+[https://mrnewbs-scrips.gitbook.io/guide/vehiclekeys/vehicle-keys-exports](https://mrnewbs-scrips.gitbook.io/guide/vehiclekeys/vehicle-keys-exports)
 
 </details>
 
@@ -29,7 +35,7 @@ If you are running into issues on compatibility please make a ticket in the disc
 
 Yes, these are registered as usable items located in the init file for "lockpick" and "advancedlockpick".
 
-If you use a house robbery that registers it then that one will take priority but the codes open.
+If you use a house robbery that registers it then that one will take priority but the codes open for them if any adjustment is needed.
 
 </details>
 
@@ -37,9 +43,7 @@ If you use a house robbery that registers it then that one will take priority bu
 
 <summary>My Police/EMS Jobs are getting a ton of keys, is there any way to make them have less?</summary>
 
-<pre><code><strong>In the config there is a spot called JobBypassKeys, inside there add the
-</strong><strong>job name and vechicle spawn model. ie police dont need to be given keys to police
-</strong></code></pre>
+In the config, there is a section called JobBypassKeys. Add the job name and vehicle spawn model there. For example, police officers don't need to be given keys to police vehicles.
 
 </details>
 
@@ -47,10 +51,7 @@ If you use a house robbery that registers it then that one will take priority bu
 
 <summary>My Friends Cant Drive My Car Without Hotwiring it!</summary>
 
-<pre><code><strong>When using item based keys you can give them the key, or if you go to the locksmith
-</strong><strong>you can buy a spare key for them. If not using item based you may give keys with
-</strong><strong>/givekeys or through the /keyring command
-</strong></code></pre>
+When using item-based keys, you can either give them the key directly or purchase a spare key from the locksmith. If not using item-based keys, you can grant access using the /givekeys command or manage keys through the /keyring command.
 
 </details>
 
@@ -58,11 +59,7 @@ If you use a house robbery that registers it then that one will take priority bu
 
 <summary>I own a car but its not in my garage table, how can I get a spare?</summary>
 
-<pre><code><strong>Because of the way the frameworks store owned vehicles ie player_vehicles etc
-</strong><strong>these are the only tables the locksmith supports. Scripts like trucking scripts
-</strong><strong>will need to grant keys on spawn.
-</strong><strong>We are a config in many scripts by defualt (including lc_truck_logisitics inside their lc_utils)
-</strong></code></pre>
+Due to how frameworks store owned vehicles (e.g., player\_vehicles), these are the only tables the locksmith supports. Scripts like trucking scripts will need to grant keys upon vehicle spawn. We are included as a default config in many scripts, including _lc\_truck\_logistics_ within their _lc\_utils_.
 
 </details>
 
@@ -70,9 +67,7 @@ If you use a house robbery that registers it then that one will take priority bu
 
 <summary>Is there a way we can use keys without needing the item?</summary>
 
-
-
-Yes! The config supports this
+Yes! The config supports this option
 
 ```lua
 Config.ItemBasedSettings = {
