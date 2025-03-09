@@ -24,6 +24,7 @@
   * [Snippet Examples](vehiclekeys/vehiclekeys-snippets/README.md)
     * [qb-vehicleshop](vehiclekeys/vehiclekeys-snippets/qb-vehicleshop.md)
     * [qb-garages](vehiclekeys/vehiclekeys-snippets/qb-garages.md)
+    * [Common qb-core Snippets](vehiclekeys/vehiclekeys-snippets/common-qb-core-snippets.md)
 * [MrNewbPrescriptions](mrnewbprescriptions/README.md)
   * [Install](mrnewbprescriptions/install/README.md)
     * [Framework](mrnewbprescriptions/install/framework/README.md)

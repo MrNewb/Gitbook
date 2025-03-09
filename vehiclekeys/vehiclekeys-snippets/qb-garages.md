@@ -1,6 +1,6 @@
 ---
-description: Snippet example use case in garages.
 icon: garage
+description: Snippet example use case in garages.
 ---
 
 # qb-garages
@@ -50,7 +50,7 @@ local function CheckPlayers(vehicle)
         end
     end
     exports.MrNewbVehicleKeys:RemoveKeys(vehicle) -- Add this here
-    Wait(1500)
+    Wait(1000)
     QBCore.Functions.DeleteVehicle(vehicle)
 end
 ```
