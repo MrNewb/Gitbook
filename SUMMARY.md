@@ -80,3 +80,5 @@
       * [qb-inventoryv2](mrnewbnamechanger/install/inventory/qb-inventoryv2.md)
       * [qb-inventory](mrnewbnamechanger/install/inventory/qb-inventory.md)
     * [Inventory Images](mrnewbnamechanger/install/inventory-images.md)
+* [MrNewbPawn](mrnewbpawn/README.md)
+  * [Install](mrnewbpawn/install.md)
