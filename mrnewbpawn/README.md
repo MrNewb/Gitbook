@@ -1,4 +1,7 @@
 ---
+description: >-
+  Script install, and usage documentation for MrNewbPawn.​     
+  https://github.com/MrNewb/MrNewbPawn
 icon: money-bills-simple
 ---
 
