@@ -16,7 +16,7 @@ ensure example_famework_name
 ensure example_inventory_name
 ensure example_target_name
 ensure community_bridge
-ensure MrNewbPawn
+ensure MrNewbBeeKeeping
 ```
 
 Please note, this is an example. Please do not put this in your config file exactly like this.
