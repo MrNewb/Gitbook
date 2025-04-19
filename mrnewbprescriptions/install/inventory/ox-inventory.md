@@ -7,7 +7,6 @@ description: Inventory Install Steps
 Add this to ox\_inventory/data/items.lua
 
 ```lua
-	
 	-- Start Of MrNewbPrescriptions
 	["medicalprescription"] = {
 		label = "medicalprescription",
@@ -15,9 +14,6 @@ Add this to ox\_inventory/data/items.lua
 		stack = false,
 		close = true,
 		description = "Medical Prescription",
-		server = {
-			export = 'MrNewbPrescriptions.medicalprescription'
-		}
 	},
 
 	["prescriptionpad"] = {
@@ -26,9 +22,14 @@ Add this to ox\_inventory/data/items.lua
 		stack = false,
 		close = true,
 		description = "Prescription Pad",
-		server = {
-			export = 'MrNewbPrescriptions.prescriptionpad'
-		}
+	},
+
+	["premiummedkit"] = {
+		label = "Premium MedKit",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "Premium MedKit",
 	},
 
 	["zombix"] = {
@@ -37,9 +38,6 @@ Add this to ox\_inventory/data/items.lua
 		stack = false,
 		close = true,
 		description = "Zombix 250 MG",
-		server = {
-			export = 'MrNewbPrescriptions.zombix'
-		}
 	},
 
 	["willies"] = {
@@ -48,9 +46,6 @@ Add this to ox\_inventory/data/items.lua
 		stack = false,
 		close = true,
 		description = "Willies Butt Drain",
-		server = {
-			export = 'MrNewbPrescriptions.willies'
-		}
 	},
 
 	["mollis"] = {
@@ -59,9 +54,74 @@ Add this to ox\_inventory/data/items.lua
 		stack = false,
 		close = true,
 		description = "Mollis 50 MG",
-		server = {
-			export = 'MrNewbPrescriptions.mollis'
+	},
+
+	["realquickioum"] = {
+		label = "Realquickioum",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "Realquickioum 100 MG",
+		client = {
+			image = "misc_prescription.png",
 		}
 	},
+
+	["naptimeioum"] = {
+		label = "Naptimeioum",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "Naptimeioum 10 MG",
+		client = {
+			image = "misc_prescription.png",
+		}
+	},
+
+	["rumaierum"] = {
+		label = "Rumaierum",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "Rumaierum 200 MG",
+		client = {
+			image = "misc_prescription.png",
+		}
+	},
+
+	["stretchyioum"] = {
+		label = "Stretchyioum",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "Stretchyioum 100 MG",
+		client = {
+			image = "misc_prescription.png",
+		}
+	},
+
+	["jimmyioum"] = {
+		label = "Jimmyioum",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "Jimmyioum 50 MG",
+		client = {
+			image = "misc_prescription.png",
+		}
+	},
+
+	["crowlyioum"] = {
+		label = "Crowlyioum",
+		weight = 100,
+		stack = false,
+		close = true,
+		description = "Crowlyioum 150 MG",
+		client = {
+			image = "misc_prescription.png",
+		}
+	},
+
+	-- End Of MrNewbPrescriptions
 ```
 

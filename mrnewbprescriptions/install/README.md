@@ -1,18 +1,26 @@
 ---
-description: >-
-  The following pages detail from start to finish how to install
-  MrNewbPrescriptions and make use of the exports it offers for external use.
 icon: wrench
 ---
 
 # Install
 
-* Download the asset MrNewbPrescriptions from keymaster. ([https://keymaster.fivem.net/](https://keymaster.fivem.net/))
-* Place the files into your FiveM server's **resources** folder.
+Start Order Must be after the inventory you use, ox\_lib, and community\_bridge.
 
-<figure><img src="../../.gitbook/assets/mrnewbprescriptionspt1.gif" alt=""><figcaption></figcaption></figure>
+This is because many scripts (including my own use autodetect to check if a resource is running)
 
-* Add `ensure MrNewbPrescriptions` to your **server.cfg** file.
-* Verify that all necessary dependencies are installed.
-* Customize the config to suit your server’s requirements following the next install categories.
-* Start the server and enjoy the setup!
+Here is an example
+
+```
+ensure ox_lib
+ensure example_famework_name
+ensure example_inventory_name
+ensure example_target_name
+ensure community_bridge
+ensure MrNewbPrescriptions
+```
+
+Please note, this is an example. Please do not put this in your config file exactly like this.
+
+
+
+[https://github.com/The-Order-Of-The-Sacred-Framework/community\_bridge](https://github.com/The-Order-Of-The-Sacred-Framework/community_bridge)

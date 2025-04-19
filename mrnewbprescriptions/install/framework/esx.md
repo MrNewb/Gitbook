@@ -5,5 +5,3 @@ icon: tombstone
 
 # ESX
 
-```
-```

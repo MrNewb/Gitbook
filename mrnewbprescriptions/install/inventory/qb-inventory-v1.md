@@ -11,13 +11,24 @@ Go to this line and add this in qb-inventory/html/js/app.js
 
 Add a new "case" under any of the others already listed and paste this in.
 
-```javascript
-    case "medicalprescription":
-        return `<p><strong>Prescription: </strong><span>${itemData.info.description}</span></p>`;
-    case "zombix":
-        return `<p><strong>Prescription: </strong><span>${itemData.info.description}</span></p>`;
-    case "willies":
-        return `<p><strong>Prescription: </strong><span>${itemData.info.description}</span></p>`;
-    case "mollis":
-        return `<p><strong>Prescription: </strong><span>${itemData.info.description}</span></p>`;
-```
+<pre class="language-javascript"><code class="lang-javascript">case "medicalprescription":
+    return `&#x3C;p>&#x3C;strong>Prescription: &#x3C;/strong>&#x3C;span>${itemData.info.description}&#x3C;/span>&#x3C;/p>`;
+case "zombix":
+    return `&#x3C;p>&#x3C;strong>Prescription: &#x3C;/strong>&#x3C;span>${itemData.info.description}&#x3C;/span>&#x3C;/p>`;
+case "willies":
+<strong>    return `&#x3C;p>&#x3C;strong>Prescription: &#x3C;/strong>&#x3C;span>${itemData.info.description}&#x3C;/span>&#x3C;/p>`;
+</strong>case "mollis":
+    return `&#x3C;p>&#x3C;strong>Prescription: &#x3C;/strong>&#x3C;span>${itemData.info.description}&#x3C;/span>&#x3C;/p>`;
+case "realquickioum":
+    return `&#x3C;p>&#x3C;strong>Prescription: &#x3C;/strong>&#x3C;span>${itemData.info.description}&#x3C;/span>&#x3C;/p>`;
+case "naptimeioum":
+    return `&#x3C;p>&#x3C;strong>Prescription: &#x3C;/strong>&#x3C;span>${itemData.info.description}&#x3C;/span>&#x3C;/p>`;
+case "rumaierum":
+    return `&#x3C;p>&#x3C;strong>Prescription: &#x3C;/strong>&#x3C;span>${itemData.info.description}&#x3C;/span>&#x3C;/p>`;
+case "stretchyioum":
+    return `&#x3C;p>&#x3C;strong>Prescription: &#x3C;/strong>&#x3C;span>${itemData.info.description}&#x3C;/span>&#x3C;/p>`;
+case "jimmyioum":
+    return `&#x3C;p>&#x3C;strong>Prescription: &#x3C;/strong>&#x3C;span>${itemData.info.description}&#x3C;/span>&#x3C;/p>`;
+case "crowlyioum":
+    return `&#x3C;p>&#x3C;strong>Prescription: &#x3C;/strong>&#x3C;span>${itemData.info.description}&#x3C;/span>&#x3C;/p>`;
+</code></pre>
