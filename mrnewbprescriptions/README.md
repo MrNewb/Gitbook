@@ -1,11 +1,13 @@
 ---
+description: >-
+  Script install, export and usage documentation for the MrNewbPrescriptions
+  script.
 icon: pills
-description: Get this today at
 ---
 
 # MrNewbPrescriptions
 
-[https://mrnewbscripts.tebex.io/category/2638810](https://mrnewbscripts.tebex.io/category/2638810)
+Get this today at [https://mrnewbscripts.tebex.io/](https://mrnewbscripts.tebex.io/)
 
 <figure><img src="../.gitbook/assets/Artboard_1.jpg" alt=""><figcaption></figcaption></figure>
 

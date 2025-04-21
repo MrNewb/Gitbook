@@ -1,4 +1,7 @@
 ---
+description: >-
+  Script install, export and usage documentation for the MrNewbPhoneTracker
+  script.
 icon: mobile
 ---
 

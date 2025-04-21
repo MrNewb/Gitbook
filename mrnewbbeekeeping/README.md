@@ -1,9 +1,10 @@
 ---
+description: >-
+  Script install, export and usage documentation for the MrNewbBeeKeeping
+  script.
 icon: bee
 ---
 
 # MrNewbBeeKeeping
 
-This is for an unreleased beta asset and for the testers.
-
-This resource will be released soon so keep watching if you are interested :)
+Get this today at [https://mrnewbscripts.tebex.io/](https://mrnewbscripts.tebex.io/)

@@ -1,11 +1,13 @@
 ---
-description: Script install, export and usage documentation for MrNewbPlateCarriers.
+description: >-
+  Script install, export and usage documentation for the MrNewbPlateCarriers
+  script.
 icon: shield
 ---
 
 # MrNewbPlateCarriers
 
-Get this today at [https://mrnewbscripts.tebex.io/category/2638810](https://mrnewbscripts.tebex.io/category/2638810)
+Get this today at [https://mrnewbscripts.tebex.io/](https://mrnewbscripts.tebex.io/package/6630425)
 
 <figure><img src="../.gitbook/assets/NEWBTEMPLATE.jpg" alt=""><figcaption></figcaption></figure>
 
