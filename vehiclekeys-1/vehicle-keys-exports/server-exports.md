@@ -24,7 +24,7 @@ ForceRemovePlayerVest
 
 ```lua
 -- This export will remove a vest if a player is wearing one. Returns true
-local removevest = exports.MrNewbPlateCarriers:forceRemovePlayerVest(src)
+local removevest = exports.MrNewbPlateCarriers:ForceRemovePlayerVest(src)
 if removevest then
     print("Yep")
 else

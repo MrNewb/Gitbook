@@ -1,0 +1,8 @@
+---
+icon: box
+---
+
+# inventory
+
+```
+```
