@@ -35,7 +35,7 @@ Step #2 hasKeys
 ```
 
 ```lua
--- Find This in qbx_core/config/client.lua aprox around line 80
+// Find This in qbx_core/config/client.lua aprox around line 80
 
     --- Only used by QB bridge
     hasKeys = function(plate, vehicle)
@@ -44,7 +44,7 @@ Step #2 hasKeys
 ```
 
 ```lua
--- Paste this in in its place
+// Replace with this
 
     --- Only used by QB bridge
     hasKeys = function(plate, vehicle)
@@ -53,6 +53,75 @@ Step #2 hasKeys
     end,
 ```
 
+***
 
+```
+Step #3 adding RemoveKeys for /dv, find the below in qbx_core/server/commands.lua
+```
 
-Please note, if you are using an alternative admin menu that registers the command /car you will need to add my exports there as well.
+```
+// Find this
+
+lib.addCommand('dv', {
+    help = locale('command.dv.help'),
+    params = {
+        { name = locale('command.dv.params.radius.name'), help = locale('command.dv.params.radius.help'), type = 'number', optional = true }
+    },
+    restricted = 'group.admin'
+}, function(source, args)
+    local ped = GetPlayerPed(source)
+    local pedCars = {GetVehiclePedIsIn(ped, false)}
+    local radius = args[locale('command.dv.params.radius.name')]
+
+    if pedCars[1] == 0 or radius then -- Only execute when player is not in a vehicle or radius is explicitly defined
+        pedCars = lib.callback.await('qbx_core:client:getVehiclesInRadius', source, radius)
+    else
+        pedCars[1] = NetworkGetNetworkIdFromEntity(pedCars[1])
+    end
+
+    if #pedCars ~= 0 then
+        for i = 1, #pedCars do
+            local pedCar = NetworkGetEntityFromNetworkId(pedCars[i])
+            if pedCar and DoesEntityExist(pedCar) then
+                DeleteVehicle(pedCar)
+            end
+        end
+    end
+end)
+```
+
+```
+// Replace with this
+
+lib.addCommand('dv', {
+    help = locale('command.dv.help'),
+    params = {
+        { name = locale('command.dv.params.radius.name'), help = locale('command.dv.params.radius.help'), type = 'number', optional = true }
+    },
+    restricted = 'group.admin'
+}, function(source, args)
+    local ped = GetPlayerPed(source)
+    local pedCars = {GetVehiclePedIsIn(ped, false)}
+    local radius = args[locale('command.dv.params.radius.name')]
+
+    if pedCars[1] == 0 or radius then -- Only execute when player is not in a vehicle or radius is explicitly defined
+        pedCars = lib.callback.await('qbx_core:client:getVehiclesInRadius', source, radius)
+    else
+        pedCars[1] = NetworkGetNetworkIdFromEntity(pedCars[1])
+    end
+
+    if #pedCars ~= 0 then
+        for i = 1, #pedCars do
+            local pedCar = NetworkGetEntityFromNetworkId(pedCars[i])
+            if pedCar and DoesEntityExist(pedCar) then
+                local plate = GetVehicleNumberPlateText(pedCar)
+                exports.MrNewbVehicleKeys:RemoveKeysByPlate(source, plate)
+                DeleteVehicle(pedCar)
+            end
+        end
+    end
+end)
+
+```
+
+Please note, if you are using an alternative admin menu that registers the command /car or dv you will need to add my exports there as well.
