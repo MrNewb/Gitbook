@@ -15,7 +15,7 @@ ensure ox_lib
 ensure example_famework_name
 ensure example_inventory_name
 ensure community_bridge
-ensure MrNewbCustomPlates
+ensure MrNewbGiftBox
 ```
 
 Please note, this is an example. Please do not put this in your config file exactly like this.
