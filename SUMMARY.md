@@ -26,6 +26,7 @@
   * [Commands](vehiclekeys/vehiclekeys-faq-1.md)
   * [Snippet Examples](vehiclekeys/vehiclekeys-snippets/README.md)
     * [qb-vehicleshop](vehiclekeys/vehiclekeys-snippets/qb-vehicleshop.md)
+    * [wasabi\_bridge](vehiclekeys/vehiclekeys-snippets/wasabi_bridge.md)
     * [qb-garages](vehiclekeys/vehiclekeys-snippets/qb-garages.md)
     * [Common qb-core Snippets](vehiclekeys/vehiclekeys-snippets/common-qb-core-snippets.md)
 * [MrNewbBeeKeeping](mrnewbbeekeeping/README.md)
