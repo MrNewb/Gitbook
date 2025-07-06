@@ -1,3 +1,9 @@
+---
+description: >-
+  (Here is a hidden giftcard for my store, hopefully you are the first to find
+  it :P ) 4295 1816 7813 4374
+---
+
 # ox\_inventory Steps
 
 Add this to ox\_inventory/data/items.lua
