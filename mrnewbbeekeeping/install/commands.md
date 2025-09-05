@@ -5,8 +5,6 @@ icon: hat-wizard
 
 # Commands
 
-## Command Guide
-
 #### Access Admin Interface
 
 * **Command:** `/hiveOpenAdmin`
