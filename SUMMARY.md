@@ -38,6 +38,7 @@
     * [Inventory Images](mrnewbbeekeeping/install/inventory-images.md)
     * [Inventory](mrnewbbeekeeping/install/inventory/README.md)
       * [🐂 ox\_inventory](mrnewbbeekeeping/install/inventory/ox_inventory.md)
+    * [Commands](mrnewbbeekeeping/install/commands.md)
 * [MrNewbPrescriptions](mrnewbprescriptions/README.md)
   * [Install](mrnewbprescriptions/install/README.md)
     * [Framework](mrnewbprescriptions/install/framework/README.md)
