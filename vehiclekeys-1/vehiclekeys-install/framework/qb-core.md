@@ -1,19 +1,87 @@
 ---
+description: To install MrNewbVehicleKeys to the core you will need use this snippet
 icon: faucet-drip
-description: Add this to qb-core/shared/items.lua
 ---
 
 # qb-core
 
-```lua
-    ['merryweather_strike_carrier']         = {['name'] = 'merryweather_strike_carrier',        ['label'] = 'Merryweather Strike Carrier',          ['weight'] = 2000,      ['type'] = 'item',      ['image'] = 'merryweather_strike_carrier.png',          ['unique'] = true, ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'Tactical carrier from Merryweather Security, designed for mercenary operations.'},
-    ['pegasus_vanguard_carrier']            = {['name'] = 'pegasus_vanguard_carrier',           ['label'] = 'Pegasus Vanguard Carrier',             ['weight'] = 1500,      ['type'] = 'item',      ['image'] = 'pegasus_vanguard_carrier.png',             ['unique'] = true, ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'A high-end tactical carrier from Pegasus for elite protection.'},
-    ['fib_specops_carrier']                 = {['name'] = 'fib_specops_carrier',                ['label'] = 'FIB SpecOps Carrier',                  ['weight'] = 2500,      ['type'] = 'item',      ['image'] = 'fib_specops_carrier.png',                  ['unique'] = true, ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'Special operations carrier for the FIB, offering high protection for covert missions.'},
-    ['noose_enforcer_carrier']              = {['name'] = 'noose_enforcer_carrier',             ['label'] = 'NOOSE Enforcer Carrier',               ['weight'] = 3000,      ['type'] = 'item',      ['image'] = 'noose_enforcer_carrier.png',               ['unique'] = true, ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'Heavy-duty carrier designed for NOOSE enforcement teams.'},
-    ['armstrong_blackops_carrier']          = {['name'] = 'armstrong_blackops_carrier',         ['label'] = 'Armstrong BlackOps Carrier',           ['weight'] = 3500,      ['type'] = 'item',      ['image'] = 'armstrong_blackops_carrier.png',           ['unique'] = true, ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'Elite carrier from Armstrong Security, used by black ops mercenaries.'},
-    ['pegasus_light_repair_plate']          = {['name'] = 'pegasus_light_repair_plate',         ['label'] = 'Pegasus Light Repair Plate',           ['weight'] = 500,       ['type'] = 'item',      ['image'] = 'pegasus_light_repair_plate.png',           ['unique'] = true, ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'A basic repair plate for light armor, typically used for quick fixes.'},
-    ['merryweather_standard_repair_plate']  = {['name'] = 'merryweather_standard_repair_plate', ['label'] = 'Merryweather Standard Repair Plate',   ['weight'] = 700,       ['type'] = 'item',      ['image'] = 'merryweather_standard_repair_plate.png',   ['unique'] = true, ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'A mid-tier repair plate with good durability, favored by Merryweather contractors.'},
-    ['armstrong_elite_repair_plate']        = {['name'] = 'armstrong_elite_repair_plate',       ['label'] = 'Armstrong Elite Repair Plate',         ['weight'] = 1500,      ['type'] = 'item',      ['image'] = 'armstrong_elite_repair_plate.png',         ['unique'] = true, ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'Elite repair plate for extreme conditions, favored by Armstrong Security black ops.'},
-    ['fib_tactical_repair_plate']           = {['name'] = 'fib_tactical_repair_plate',          ['label'] = 'FIB Tactical Repair Plate',            ['weight'] = 900,       ['type'] = 'item',      ['image'] = 'fib_tactical_repair_plate.png',            ['unique'] = true, ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'A tactical repair plate used by the FIB for covert operations.'},
-    ['noose_heavy_repair_plate']            = {['name'] = 'noose_heavy_repair_plate',           ['label'] = 'NOOSE Heavy Repair Plate',             ['weight'] = 1200,      ['type'] = 'item',      ['image'] = 'noose_heavy_repair_plate.png',             ['unique'] = true, ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'A heavy, reinforced repair plate used by NOOSE forces for high-risk operations.'},
+
+
 ```
+Step #1 adding RemoveKeys for /dv, find the below in qb-core/client/events.lua
+```
+
+```lua
+-- Find This in qb-core/client/events.lua aprox around line 144
+RegisterNetEvent('QBCore:Command:DeleteVehicle', function()
+    local ped = PlayerPedId()
+    local veh = GetVehiclePedIsUsing(ped)
+    if veh ~= 0 then
+        SetEntityAsMissionEntity(veh, true, true)
+        DeleteVehicle(veh)
+    else
+        local pcoords = GetEntityCoords(ped)
+        local vehicles = GetGamePool('CVehicle')
+        for _, v in pairs(vehicles) do
+            if #(pcoords - GetEntityCoords(v)) <= 5.0 then
+                SetEntityAsMissionEntity(v, true, true)
+                DeleteVehicle(v)
+            end
+        end
+    end
+end)
+```
+
+```
+-- Paste this in in its place
+```
+
+```lua
+-- Paste this in in its place
+RegisterNetEvent('QBCore:Command:DeleteVehicle', function()
+    local ped = PlayerPedId()
+    local veh = GetVehiclePedIsUsing(ped)
+    if veh ~= 0 then
+        exports.MrNewbVehicleKeys:RemoveKeys(veh)
+        SetEntityAsMissionEntity(veh, true, true)
+        DeleteVehicle(veh)
+    else
+        local pcoords = GetEntityCoords(ped)
+        local vehicles = GetGamePool('CVehicle')
+        for _, v in pairs(vehicles) do
+            if #(pcoords - GetEntityCoords(v)) <= 5.0 then
+                exports.MrNewbVehicleKeys:RemoveKeys(v)
+                SetEntityAsMissionEntity(v, true, true)
+                DeleteVehicle(v)
+            end
+        end
+    end
+end)
+
+```
+
+***
+
+```
+Step #2 Go to qb-core/shared/items.lua and paste this in, depending on the qb
+version you use I have added both qbs old and new formats
+```
+
+```lua
+['vehiclekeys'] 		= {['name'] = 'vehiclekeys', 			['label'] = 'Vehicle Keys', 			['weight'] = 100, ['type'] = 'item', ['image'] = 'vehiclekeys.png', 		['unique'] = true, 	['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'Fancy vehicle keys'},
+['keyring'] 			= {['name'] = 'keyring', 			['label'] = 'Keyring', 				['weight'] = 220, ['type'] = 'item', ['image'] = 'keyring.png', 		['unique'] = true,     ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'A keyring that holds car keys.'},
+['aftermarket_locks'] 	        = {['name'] = 'aftermarket_locks', 		['label'] = 'Aftermarket Lock System',          ['weight'] = 220, ['type'] = 'item', ['image'] = 'aftermarket_locks.png', 	['unique'] = false,     ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'A Vehicle Lock System To Replace Key Systems'},
+['lockpick'] 			= {['name'] = 'lockpick', 			['label'] = 'Lockpick', 		 	['weight'] = 850, ['type'] = 'item', ['image'] = 'lockpick.png', 		['unique'] = false,     ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'A mysterious device.'},
+['advancedlockpick'] 	        = {['name'] = 'advancedlockpick', 		['label'] = 'Advanced Lockpick', 		['weight'] = 850, ['type'] = 'item', ['image'] = 'advancedlockpick.png', 	['unique'] = false,     ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'A upgraded mysterious device.'},
+['rental_paperwork'] 	        = {['name'] = 'rental_paperwork', 		['label'] = 'Rental Paperwork', 		['weight'] = 850, ['type'] = 'item', ['image'] = 'rental_paperwork.png', 	['unique'] = true,     ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'Paperwork for a rental vehicle.'},
+
+
+vehiclekeys                  = { name = 'vehiclekeys',              label = 'Vehicle Keys',             weight = 100, type = 'item', image = 'vehiclekeys.png',         unique = true,     useable = true, shouldClose = true, combinable = nil, description = 'Fancy vehicle keys' },
+keyring                      = { name = 'keyring',                  label = 'Vehicle Key Ring',         weight = 100, type = 'item', image = 'keyring.png',             unique = true,     useable = true, shouldClose = true, combinable = nil, description = 'A keyring to solve all problems.' },
+aftermarket_locks            = { name = 'aftermarket_locks',        label = 'Aftermarket Lock System',  weight = 100, type = 'item', image = 'aftermarket_locks.png',   unique = true,     useable = true, shouldClose = true, combinable = nil, description = 'A Vehicle Lock System To Replace Key Systems' },
+lockpick                     = { name = 'lockpick',                 label = 'Lockpick',                 weight = 300, type = 'item', image = 'lockpick.png',            unique = false,    useable = true, shouldClose = true, combinable = nil, description = 'A mysterious device.' },
+advancedlockpick             = { name = 'advancedlockpick',         label = 'Advanced Lockpick',        weight = 500, type = 'item', image = 'advancedlockpick.png',    unique = false,    useable = true, shouldClose = true, combinable = nil, description = 'A upgraded mysterious device.' },
+rental_paperwork 	     = {name = 'rental_paperwork', 	    label = 'Rental Paperwork', 	weight = 850, type = 'item', image = 'rental_paperwork.png', 	unique = true,     useable = true, shouldClose = true, combinable = nil, description = 'Paperwork for a rental vehicle.'},
+```
+
+Please note, if you are using an alternative admin menu that registers the command /car you will need to add my exports there as well. Default qb-vehiclekeys events should all work as of now.
