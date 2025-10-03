@@ -1,7 +1,7 @@
 ---
 description: >-
-  Script install, export and usage documentation for the MrNewbVehicleKeys
-  script.
+  Script install, export and usage documentation for the beta version of
+  MrNewbVehicleKeys script.
 icon: key
 ---
 
