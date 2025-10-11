@@ -1,0 +1,27 @@
+---
+description: Install Guide
+icon: wrench
+---
+
+# Install
+
+Start Order Must be after the inventory you use, ox\_lib, and community\_bridge.
+
+This is because many scripts (including my own use autodetect to check if a resource is running)
+
+Here is an example
+
+```
+ensure ox_lib
+ensure example_famework_name
+ensure example_inventory_name
+ensure example_targetscript_name
+ensure community_bridge
+ensure MrNewbsSpookySeason
+```
+
+Please note, this is an example. Please do not put this in your config file like this.
+
+If you want to use the ghost hunting features you must also install [https://github.com/PenguScript/pengu\_digiscanner](https://github.com/PenguScript/pengu_digiscanner) (Hes a cool dude)
+
+[https://github.com/TheOrderFivem/community\_bridge](https://github.com/TheOrderFivem/community_bridge)
