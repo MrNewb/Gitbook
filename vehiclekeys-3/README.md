@@ -7,4 +7,4 @@ icon: tombstone
 
 # MrNewbSpookySeason
 
-Get this today at [https://github.com/MrNewb/MrNewbSpookySeason](https://github.com/MrNewb/MrNewbSpookySeason)
+Get this today at [https://github.com/MrNewb/MrNewbsSpookySeason](https://github.com/MrNewb/MrNewbsSpookySeason)
