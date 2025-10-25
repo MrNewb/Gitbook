@@ -17,7 +17,7 @@ ensure example_famework_name
 ensure example_inventory_name
 ensure example_targetscript_name
 ensure community_bridge
-ensure MrNewbOrganics
+ensure MrNewbVehicleRentals
 ```
 
 Please note, this is an example. Please do not put this in your config file like this.
