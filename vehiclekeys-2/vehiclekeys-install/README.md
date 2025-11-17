@@ -23,4 +23,4 @@ Please note, this is an example. Please do not put this in your config file like
 
 
 
-[https://github.com/TheOrderFivem/community\_bridge](https://github.com/TheOrderFivem/community_bridge)
+[https://github.com/MrNewb/community\_bridge](https://github.com/MrNewb/community_bridge)

@@ -24,4 +24,4 @@ Please note, this is an example. Please do not put this in your config file like
 
 If you want to use the ghost hunting features you must also install [https://github.com/PenguScript/pengu\_digiscanner](https://github.com/PenguScript/pengu_digiscanner) (Hes a cool dude)
 
-[https://github.com/TheOrderFivem/community\_bridge](https://github.com/TheOrderFivem/community_bridge)
+[https://github.com/MrNewb/community\_bridge](https://github.com/MrNewb/community_bridge)
