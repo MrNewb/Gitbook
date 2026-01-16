@@ -18,7 +18,7 @@ ensure community_bridge
 ensure MrNewbNameChanger
 ```
 
-Please note, this is an example. Please do not put this in your config file exactly like this.
+Please note, this is an example and you should not put this in your config file exactly like this.
 
 
 

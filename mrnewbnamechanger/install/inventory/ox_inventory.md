@@ -1,29 +1,30 @@
 ---
-description: Add the items
+description: Add the items in ox_inventory/data/items.lua
 ---
 
 # 🐂 ox\_inventory
 
 ```lua
+["namechangevoucher"] = {
+	label = "Name Change Voucher",
+	weight = 100,
+	stack = false,
+	close = true,
+},
 
-	["namechangevoucher"] = {
-        label = "namechangevoucher",
-        weight = 100,
-        stack = false,
-        close = true,
-    },
+["blankmarriagecertificate"] = {
+	label = "Blank Marriage Certificate",
+	weight = 100,
+	stack = false,
+	close = true,
+},
 
-	["blankmarriagecertificate"] = {
-        label = "blankmarriagecertificate",
-        weight = 100,
-        stack = false,
-        close = true,
-    },
-	["filledcertificate"] = {
-        label = "filledcertificate",
-        weight = 100,
-        stack = false,
-        close = true,
-    },
-
+["filledcertificate"] = {
+	label = "Filled Certificate",
+	weight = 100,
+	stack = false,
+	close = true,
+},
 ```
+
+Add the images to ox\_inventory/web/images
