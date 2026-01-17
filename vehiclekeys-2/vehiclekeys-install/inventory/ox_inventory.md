@@ -7,7 +7,7 @@ description: Add this to ox_inventory/data/items.lua
 
 
 ```lua
-["merryweather_strike_carrier"] = {
+["merryweather_carrier"] = {
     label = "Merryweather Strike Carrier",
     weight = 2000,
     stack = false,
@@ -15,7 +15,7 @@ description: Add this to ox_inventory/data/items.lua
     description = "Tactical carrier from Merryweather Security, designed for mercenary operations.",
 },
 
-["pegasus_vanguard_carrier"] = {
+["pegasus_carrier"] = {
     label = "Pegasus Vanguard Carrier",
     weight = 1500,
     stack = false,
@@ -23,7 +23,7 @@ description: Add this to ox_inventory/data/items.lua
     description = "A high-end tactical carrier from Pegasus for elite protection.",
 },
 
-["fib_specops_carrier"] = {
+["fib_carrier"] = {
     label = "FIB SpecOps Carrier",
     weight = 2500,
     stack = false,
@@ -31,7 +31,7 @@ description: Add this to ox_inventory/data/items.lua
     description = "Special operations carrier for the FIB, offering high protection for covert missions.",
 },
 
-["noose_enforcer_carrier"] = {
+["noose_carrier"] = {
     label = "NOOSE Enforcer Carrier",
     weight = 3000,
     stack = false,
@@ -39,7 +39,7 @@ description: Add this to ox_inventory/data/items.lua
     description = "Heavy-duty carrier designed for NOOSE enforcement teams.",
 },
 
-["armstrong_blackops_carrier"] = {
+["armstrong_carrier"] = {
     label = "Armstrong BlackOps Carrier",
     weight = 3500,
     stack = false,
