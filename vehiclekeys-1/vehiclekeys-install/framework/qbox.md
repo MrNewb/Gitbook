@@ -13,33 +13,53 @@ Remove or disable `qbx_vehiclekeys` before starting MrNewbVehicleKeys.
 
 ## Step 1 — GiveKeys hook
 
-**Find this in `qbx_core/config/server.lua` (around line 114):**
+**Find this in `qbx_core/config/server.lua` (around line 119):**
 
 ```lua
-giveVehicleKeys = function(src, plate, vehicle)
-    return exports.qbx_vehiclekeys:GiveKeys(src, vehicle)
-end,
+    giveVehicleKeys = function(src, plate, vehicle)
+        return exports.qbx_vehiclekeys:GiveKeys(src, vehicle)
+    end,
 ```
 
 **Replace with:**
 
 ```lua
 giveVehicleKeys = function(src, plate, vehicle)
-    local netId = NetworkGetNetworkIdFromEntity(vehicle)
-    return exports.MrNewbVehicleKeys:GiveKeys(src, netId)
+    -- usage of the spawnvehicle return in qb shows the second return is the entity id and not a network id, we will trust that its accurate here.
+    return exports.MrNewbVehicleKeys:GiveKeys(src, vehicle)
 end,
 ```
 
 ---
 
-## Step 2 — hasKeys hook
+## Step 2 — setvehiclelock hook
+
+**Find this in `qbx_core/config/server.lua` (around line 123):**
+
+```lua
+    setVehicleLock = function(vehicle, state)
+        exports.qbx_vehiclekeys:SetLockState(vehicle, state)
+    end,
+```
+
+**Replace with:**
+
+```lua
+    setVehicleLock = function(vehicle, state)
+        --exports.qbx_vehiclekeys:SetLockState(vehicle, state)
+    end,
+```
+
+---
+
+## Step 3 — hasKeys hook
 
 **Find this in `qbx_core/config/client.lua` (around line 80):**
 
 ```lua
 --- Only used by QB bridge
 hasKeys = function(plate, vehicle)
-    return exports.qbx_vehiclekeys:HasKeys(vehicle)
+    return GetResourceState('qbx_vehiclekeys') ~= 'started' or exports.qbx_vehiclekeys:HasKeys(vehicle)
 end,
 ```
 
@@ -55,7 +75,7 @@ end,
 
 ---
 
-## Step 3 — Remove keys when a vehicle is deleted (/dv)
+## Step 4 — Remove keys when a vehicle is deleted (/dv)
 
 **Find this in `qbx_core/server/commands.lua`:**
 

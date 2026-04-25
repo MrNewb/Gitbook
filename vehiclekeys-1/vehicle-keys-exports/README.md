@@ -36,7 +36,9 @@ If you are migrating from **qb-vehiclekeys**, the [backwards-compatible events](
 | `SetTempKey(src, plate, durationMs)` | Grant a timed temporary key |
 | `RemoveTempKey(src, plate)` | Remove a temporary key |
 | `SetTempKeyForPlayers(players, plate, ms)` | Grant temp key to multiple players |
+| `RemoveTempKeyForPlayers(players, plate)` | Remove temp key from multiple players |
 | `SetTempKeyForJob(job, plate, ms)` | Grant temp key to all players in a job |
+| `RemoveTempKeyForJob(job, plate)` | Remove temp key from all players in a job |
 | `KeyType()` | Returns true if item-based mode is on |
 | `GetKeySystem()` | Returns the internal server system object |
 

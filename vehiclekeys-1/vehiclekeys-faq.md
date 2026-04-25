@@ -43,7 +43,26 @@ Yes. Lockpicks and advanced lockpicks are registered as usable items in the reso
 
 <summary>My Police/EMS jobs are getting too many keys — is there a way to reduce that?</summary>
 
-Yes. In the config there is a `JobBypassKeys` section. Add the job name and vehicle spawn model there and those players will not be given keys for matching vehicles automatically — for example, police officers do not need keys granted for police vehicles.
+Yes. In `configs/config.lua` there is a `Config.Blacklist` table with `"Shared Job Models"` and `"Shared Job Plates"` sections. Add the job name and vehicle models/plates there — players in that job will not be auto-granted keys for those vehicles:
+
+```lua
+Config.Blacklist = {
+    ["Shared Job Models"] = {
+        police = {
+            [`police`] = true,
+            [`police2`] = true,
+        },
+        ambulance = {
+            [`ambulance`] = true,
+        },
+    },
+    ["Shared Job Plates"] = {
+        police = {
+            "BIGBOSS",
+        },
+    }
+}
+```
 
 </details>
 
@@ -67,12 +86,16 @@ The locksmith only supports vehicles stored in framework-standard tables (e.g. `
 
 <summary>Is there a way we can use keys without needing the item?</summary>
 
-Yes! The config supports this option
+Yes. In `configs/config.lua`, set `Enabled` to `false` inside `Config.ItemBasedSettings`:
 
 ```lua
 Config.ItemBasedSettings = {
-	using_key_items = true -- set to false to not use keys as items :)
+    Enabled = false, -- set to false to disable item-based keys
+    ...
+}
 ```
+
+When disabled, keys are stored in the database/memory rather than as inventory items.
 
 </details>
 
