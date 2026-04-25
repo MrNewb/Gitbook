@@ -2,9 +2,9 @@
 description: Add this to ox_inventory/data/items.lua
 ---
 
-# 🐂 ox\_inventory
+# ox\_inventory
 
-
+Add the following entries to `ox_inventory/data/items.lua`.
 
 ```lua
 ['vehiclekeys'] = {

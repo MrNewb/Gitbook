@@ -7,61 +7,59 @@ icon: poop
 
 # qbox
 
-```
-Step #1 GiveKeys
-```
+{% hint style="warning" %}
+Remove or disable `qbx_vehiclekeys` before starting MrNewbVehicleKeys.
+{% endhint %}
+
+## Step 1 — GiveKeys hook
+
+**Find this in `qbx_core/config/server.lua` (around line 114):**
 
 ```lua
--- Find This in qbx_core/config/server.lua aprox around line 114
-
-    giveVehicleKeys = function(src, plate, vehicle)
-        return exports.qbx_vehiclekeys:GiveKeys(src, vehicle)
-    end,
+giveVehicleKeys = function(src, plate, vehicle)
+    return exports.qbx_vehiclekeys:GiveKeys(src, vehicle)
+end,
 ```
+
+**Replace with:**
 
 ```lua
--- Paste this in in its place
-
-    giveVehicleKeys = function(src, plate, vehicle)
-        local netId = NetworkGetNetworkIdFromEntity(vehicle)
-        return exports.MrNewbVehicleKeys:GiveKeys(src, netId)
-    end,
+giveVehicleKeys = function(src, plate, vehicle)
+    local netId = NetworkGetNetworkIdFromEntity(vehicle)
+    return exports.MrNewbVehicleKeys:GiveKeys(src, netId)
+end,
 ```
 
-***
+---
 
-```
-Step #2 hasKeys
-```
+## Step 2 — hasKeys hook
+
+**Find this in `qbx_core/config/client.lua` (around line 80):**
 
 ```lua
-// Find This in qbx_core/config/client.lua aprox around line 80
-
-    --- Only used by QB bridge
-    hasKeys = function(plate, vehicle)
-        return exports.qbx_vehiclekeys:HasKeys(vehicle)
-    end,
+--- Only used by QB bridge
+hasKeys = function(plate, vehicle)
+    return exports.qbx_vehiclekeys:HasKeys(vehicle)
+end,
 ```
+
+**Replace with:**
 
 ```lua
-// Replace with this
-
-    --- Only used by QB bridge
-    hasKeys = function(plate, vehicle)
-        if DoesEntityExist(vehicle) then return exports.MrNewbVehicleKeys:HaveKeys(vehicle) end
-        return false
-    end,
+--- Only used by QB bridge
+hasKeys = function(plate, vehicle)
+    if DoesEntityExist(vehicle) then return exports.MrNewbVehicleKeys:HaveKeys(vehicle) end
+    return false
+end,
 ```
 
-***
+---
 
-```
-Step #3 adding RemoveKeys for /dv, find the below in qbx_core/server/commands.lua
-```
+## Step 3 — Remove keys when a vehicle is deleted (/dv)
 
-```
-// Find this
+**Find this in `qbx_core/server/commands.lua`:**
 
+```lua
 lib.addCommand('dv', {
     help = locale('command.dv.help'),
     params = {
@@ -73,7 +71,7 @@ lib.addCommand('dv', {
     local pedCars = {GetVehiclePedIsIn(ped, false)}
     local radius = args[locale('command.dv.params.radius.name')]
 
-    if pedCars[1] == 0 or radius then -- Only execute when player is not in a vehicle or radius is explicitly defined
+    if pedCars[1] == 0 or radius then
         pedCars = lib.callback.await('qbx_core:client:getVehiclesInRadius', source, radius)
     else
         pedCars[1] = NetworkGetNetworkIdFromEntity(pedCars[1])
@@ -90,9 +88,9 @@ lib.addCommand('dv', {
 end)
 ```
 
-```
-// Replace with this
+**Replace with:**
 
+```lua
 lib.addCommand('dv', {
     help = locale('command.dv.help'),
     params = {
@@ -104,7 +102,7 @@ lib.addCommand('dv', {
     local pedCars = {GetVehiclePedIsIn(ped, false)}
     local radius = args[locale('command.dv.params.radius.name')]
 
-    if pedCars[1] == 0 or radius then -- Only execute when player is not in a vehicle or radius is explicitly defined
+    if pedCars[1] == 0 or radius then
         pedCars = lib.callback.await('qbx_core:client:getVehiclesInRadius', source, radius)
     else
         pedCars[1] = NetworkGetNetworkIdFromEntity(pedCars[1])
@@ -121,7 +119,9 @@ lib.addCommand('dv', {
         end
     end
 end)
-
 ```
 
-Please note, if you are using an alternative admin menu that registers the command /car or dv you will need to add my exports there as well.
+{% hint style="info" %}
+If you use a third-party admin menu that registers its own `/car` or `/dv` command, add the key removal export there as well using the same pattern as Step 3.
+{% endhint %}
+

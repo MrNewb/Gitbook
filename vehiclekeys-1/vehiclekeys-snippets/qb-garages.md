@@ -5,9 +5,13 @@ icon: garage
 
 # qb-garages
 
-Here is a client side example on the usage of my exports in the script.
+{% hint style="info" %}
+These are the two places in qb-garages that need key exports added: when a vehicle is taken out of the garage (give keys) and when the garage deletes a vehicle (remove keys). Adapt the pattern to whichever garage script you use.
+{% endhint %}
 
-## Granting Keys
+## Granting Keys on Garage Takeout
+
+Add `exports.MrNewbVehicleKeys:GiveKeys(veh)` after the vehicle is spawned and the player is seated. The commented-out line shows the old qb-vehiclekeys event it replaces.
 
 ```lua
 RegisterNetEvent('qb-garages:client:takeOutGarage', function(data)
@@ -22,8 +26,8 @@ RegisterNetEvent('qb-garages:client:takeOutGarage', function(data)
                 QBCore.Functions.SetVehicleProperties(veh, properties)
                 exports[Config.FuelResource]:SetFuel(veh, data.stats.fuel)
                 TriggerServerEvent('qb-garages:server:updateVehicleState', 0, vehPlate)
-                --TriggerEvent('vehiclekeys:client:SetOwner', vehPlate)
-                exports.MrNewbVehicleKeys:GiveKeys(veh) -- add this here
+                --TriggerEvent('vehiclekeys:client:SetOwner', vehPlate) -- old event, replaced below
+                exports.MrNewbVehicleKeys:GiveKeys(veh)
                 if Config.Warp then TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1) end
                 if Config.VisuallyDamageCars then doCarDamage(veh, data.stats, properties) end
                 SetVehicleEngineOn(veh, true, true, false)
@@ -35,11 +39,9 @@ RegisterNetEvent('qb-garages:client:takeOutGarage', function(data)
 end)
 ```
 
-In the above example I left in the commented out code so you can see the similar option below it.
+## Removing Keys on Vehicle Delete
 
-
-
-## Removing Keys
+Add `exports.MrNewbVehicleKeys:RemoveKeys(vehicle)` before the vehicle is deleted so keys are cleaned up from the player's inventory.
 
 ```lua
 local function CheckPlayers(vehicle)
@@ -49,7 +51,7 @@ local function CheckPlayers(vehicle)
             TaskLeaveVehicle(seat, vehicle, 0)
         end
     end
-    exports.MrNewbVehicleKeys:RemoveKeys(vehicle) -- Add this here
+    exports.MrNewbVehicleKeys:RemoveKeys(vehicle)
     Wait(1000)
     QBCore.Functions.DeleteVehicle(vehicle)
 end

@@ -5,9 +5,13 @@ icon: car
 
 # qb-vehicleshop
 
-Here is a client side example on the usage of my exports in the script.
+{% hint style="info" %}
+Three events in qb-vehicleshop need key exports: giving keys on test drive start, removing them when the timer expires, and removing them if the player ends the test drive early via menu. Keys are also given on vehicle purchase.
+{% endhint %}
 
 ## Test Drives
+
+The commented-out lines show the old qb-vehiclekeys events they replace.
 
 ```lua
 -- Giving Keys For Test Drive
@@ -15,13 +19,13 @@ RegisterNetEvent('qb-vehicleshop:client:TestDrive', function()
     if not inTestDrive and ClosestVehicle ~= 0 then
         inTestDrive = true
         local prevCoords = GetEntityCoords(PlayerPedId())
-        tempShop = insideShop -- temp hacky way of setting the shop because it changes after the callback has returned since you are outside the zone
+        tempShop = insideShop
         QBCore.Functions.TriggerCallback('QBCore:Server:SpawnVehicle', function(netId)
             local veh = NetToVeh(netId)
             exports['LegacyFuel']:SetFuel(veh, 100)
             SetVehicleNumberPlateText(veh, 'TESTDRIVE')
             SetEntityHeading(veh, Config.Shops[tempShop]['TestDriveSpawn'].w)
-            --TriggerEvent('vehiclekeys:client:SetOwner', QBCore.Functions.GetPlate(veh))
+            --TriggerEvent('vehiclekeys:client:SetOwner', QBCore.Functions.GetPlate(veh)) -- old event
             exports.MrNewbVehicleKeys:GiveKeys(veh)
             testDriveVeh = netId
             QBCore.Functions.Notify(Lang:t('general.testdrive_timenoti', { testdrivetime = Config.Shops[tempShop]['TestDriveTimeLimit'] }))
@@ -34,16 +38,16 @@ RegisterNetEvent('qb-vehicleshop:client:TestDrive', function()
 end)
 
 
--- Removing Keys After Test Drives forced
+-- Removing Keys when the test drive timer runs out or player leaves the vehicle
 local function startTestDriveTimer(testDriveTime, prevCoords)
     local gameTimer = GetGameTimer()
     CreateThread(function()
-        Wait(2000) -- Avoids the condition to run before entering vehicle
+        Wait(2000)
         while inTestDrive do
             if GetGameTimer() < gameTimer + tonumber(1000 * testDriveTime) then
                 local secondsLeft = GetGameTimer() - gameTimer
                 if secondsLeft >= tonumber(1000 * testDriveTime) - 20 or GetPedInVehicleSeat(NetToVeh(testDriveVeh), -1) ~= PlayerPedId() then
-                    exports.MrNewbVehicleKeys:RemoveKeys(NetworkGetEntityFromNetworkId(testDriveVeh)) -- add this
+                    exports.MrNewbVehicleKeys:RemoveKeys(NetworkGetEntityFromNetworkId(testDriveVeh))
                     TriggerServerEvent('qb-vehicleshop:server:deleteVehicle', testDriveVeh)
                     testDriveVeh = 0
                     inTestDrive = false
@@ -57,13 +61,13 @@ local function startTestDriveTimer(testDriveTime, prevCoords)
     end)
 end
 
--- Removing Keys After Test Drives menu
+-- Removing Keys when the player ends the test drive early via menu
 RegisterNetEvent('qb-vehicleshop:client:TestDriveReturn', function()
     local ped = PlayerPedId()
     local veh = GetVehiclePedIsIn(ped)
     local entity = NetworkGetEntityFromNetworkId(testDriveVeh)
     if veh == entity then
-        exports.MrNewbVehicleKeys:RemoveKeys(entity) -- add this
+        exports.MrNewbVehicleKeys:RemoveKeys(entity)
         testDriveVeh = 0
         inTestDrive = false
         DeleteEntity(veh)
@@ -75,20 +79,18 @@ RegisterNetEvent('qb-vehicleshop:client:TestDriveReturn', function()
 end)
 ```
 
-In the above example I left in the commented out code so you can see the changes it, it being commented out will not hurt anything.
-
 ## Purchase Car
 
 ```lua
 RegisterNetEvent('qb-vehicleshop:client:buyShowroomVehicle', function(vehicle, plate)
-    tempShop = insideShop -- temp hacky way of setting the shop because it changes after the callback has returned since you are outside the zone
+    tempShop = insideShop
     QBCore.Functions.TriggerCallback('QBCore:Server:SpawnVehicle', function(netId)
         local veh = NetToVeh(netId)
         exports['LegacyFuel']:SetFuel(veh, 100)
         SetVehicleNumberPlateText(veh, plate)
         SetEntityHeading(veh, Config.Shops[tempShop]['VehicleSpawn'].w)
-        --TriggerEvent('vehiclekeys:client:SetOwner', QBCore.Functions.GetPlate(veh))
-        exports.MrNewbVehicleKeys:GiveKeys(veh) -- add this
+        --TriggerEvent('vehiclekeys:client:SetOwner', QBCore.Functions.GetPlate(veh)) -- old event
+        exports.MrNewbVehicleKeys:GiveKeys(veh)
         TriggerServerEvent('qb-mechanicjob:server:SaveVehicleProps', QBCore.Functions.GetVehicleProperties(veh))
     end, vehicle, Config.Shops[tempShop]['VehicleSpawn'], true)
 end)

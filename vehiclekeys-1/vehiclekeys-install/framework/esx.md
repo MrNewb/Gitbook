@@ -8,9 +8,15 @@ icon: tombstone
 
 # esx
 
-```
-Step #1 Edit /car command
-```
+{% hint style="warning" %}
+If you were previously using another key script, make sure it is removed or disabled before starting MrNewbVehicleKeys.
+{% endhint %}
+
+## Step 1 — Edit the /car command
+
+This gives the admin keys to any vehicle they spawn via `/car`.
+
+**Find this in `es_extended/server/commands.lua` (around line 69):**
 
 ```lua
 -- Find This in es_extended/server/commands.lua aprox around line 69
@@ -72,8 +78,9 @@ ESX.RegisterCommand(
 )
 ```
 
+**Replace with:**
+
 ```lua
--- Paste this in in its place
 ESX.RegisterCommand(
     "car",
     "admin",
@@ -131,8 +138,8 @@ ESX.RegisterCommand(
 )
 ```
 
-***
+---
 
-
-
-Please note, if you are using an alternative admin menu that registers the command /car you will need to add my exports there as well.
+{% hint style="info" %}
+If you use a third-party admin menu that registers its own `/car` command, you will need to add `exports.MrNewbVehicleKeys:GiveKeys` there too, using the same pattern as above.
+{% endhint %}
