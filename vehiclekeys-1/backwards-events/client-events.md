@@ -5,7 +5,7 @@ description: Supported qb-vehiclekeys client-side backwards-compatibility events
 # Client Events
 
 {% hint style="warning" %}
-These are compatibility shims for legacy scripts. For new development, use the [client exports](../vehicle-keys-exports/client-exports.md) instead.
+These are compatibility events for legacy scripts and can be disabled in config.overrides. For new development, use the [client exports](../vehicle-keys-exports/client-exports.md) instead.
 {% endhint %}
 
 ### vehiclekeys:client:SetOwner
