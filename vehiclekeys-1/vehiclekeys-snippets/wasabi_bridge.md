@@ -5,9 +5,13 @@ icon: car
 
 # wasabi\_bridge
 
-Here is how to add MrNewbVehicleKeys compatibility to wasabi\_bridge, keep in mind you will have to adjust config options in his scripts to make this work with it.
+This shows how to add MrNewbVehicleKeys support to `wasabi_bridge`. You will also need to adjust the relevant config options in Wasabi's scripts to route key actions through the bridge.
 
-## find this in wasabi\_bridge/customize/client/carkeys.lua
+{% hint style="info" %}
+Edit `wasabi_bridge/customize/client/carkeys.lua`. Both the give and remove functions need updating.
+{% endhint %}
+
+**Find this:**
 
 ```lua
 -- Add car keys
@@ -29,7 +33,7 @@ function WSB.removeCarKeys(plate, _model, _vehicle)
 end
 ```
 
-## Change it to this
+**Replace with:**
 
 ```lua
 -- Add car keys

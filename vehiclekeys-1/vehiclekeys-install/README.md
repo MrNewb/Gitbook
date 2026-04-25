@@ -5,28 +5,24 @@ icon: wrench
 
 # Install
 
-Start Order Must be after the inventory and target you use, ox\_lib, and community\_bridge.
+## Start Order
 
-This is because many scripts (including my own use autodetect to check if a resource is running)
+MrNewbVehicleKeys must start **after** your inventory, target, ox\_lib, and community\_bridge resources. Many scripts (including this one) use auto-detection to check if a resource is running, so start order matters.
 
-Here is an example
-
-
-
-test
+{% hint style="warning" %}
+This is an example only — do not copy it directly into your config. Adjust the resource names to match what you actually have installed.
+{% endhint %}
 
 ```
 ensure ox_lib
-ensure example_famework_name
-ensure example_inventory_name
-ensure example_target_name
+ensure <your_framework>         # e.g. qb-core, es_extended, qbx_core
+ensure <your_inventory>         # e.g. ox_inventory, qb-inventory
+ensure <your_target>            # e.g. ox_target, qb-target
 ensure community_bridge
 ensure MrNewbVehicleKeys
-ensure example_garage_name
+ensure <your_garage>            # e.g. qb-garages, ox_garage
 ```
 
-Please note, this is an example. Please do not put this in your config file exactly like this.
-
-
-
-[https://github.com/MrNewb/community\_bridge](https://github.com/MrNewb/community_bridge)
+{% hint style="info" %}
+**community\_bridge** is required. You can find it here: [https://github.com/MrNewb/community\_bridge](https://github.com/MrNewb/community_bridge)
+{% endhint %}

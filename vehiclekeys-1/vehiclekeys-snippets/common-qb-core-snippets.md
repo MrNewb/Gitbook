@@ -4,10 +4,17 @@ icon: faucet
 
 # Common qb-core Snippets
 
-## DV Command Remove Keys
+## DV Command — Remove Keys on Vehicle Delete
+
+When a vehicle is deleted via the `/dv` command, keys should be removed first so they do not linger in the player's inventory or key list.
+
+{% hint style="warning" %}
+Find the event handler in your qb-core install and replace it with the version below. Do **not** apply both versions at the same time.
+{% endhint %}
+
+**Find this:**
 
 ```lua
--- Find This
 RegisterNetEvent('QBCore:Command:DeleteVehicle', function()
     local ped = PlayerPedId()
     local veh = GetVehiclePedIsUsing(ped)
@@ -27,8 +34,9 @@ RegisterNetEvent('QBCore:Command:DeleteVehicle', function()
 end)
 ```
 
+**Replace with:**
+
 ```lua
--- Replace With This
 RegisterNetEvent('QBCore:Command:DeleteVehicle', function()
     local ped = PlayerPedId()
     local veh = GetVehiclePedIsUsing(ped)

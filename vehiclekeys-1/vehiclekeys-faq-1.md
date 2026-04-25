@@ -1,74 +1,114 @@
 ---
-description: Heres a list of available commands in the script.
+description: A list of all available in-game commands.
 icon: message-smile
 ---
 
 # Commands
 
-
-
-
-
 ## Admin Commands
 
-*   [ ] /giveadminkey
+{% hint style="warning" %}
+Admin commands require the player to be flagged as an admin. This is configured via `Config.Admin.IsPlayerAdmin` in `overrides.lua`.
+{% endhint %}
 
-    ```
-    This command will require you to pass a id and a plate for the key you wish to grant
+### /giveadminkey
 
-    -- example
-    -- /giveadminkey 1 MYCOLPL8
-    -- this would give keys to player 1 for MYCOLPL8
-    ```
-*   [ ] /givenearbykey
+Gives a player keys to a specific vehicle by plate.
 
-    ```
-    This command will give keys to the closest vehicle in range
-    ```
-* [ ] /vehiclekeyAdmin
+```
+/giveadminkey <playerID> <plate>
+```
 
-***
+**Example:** `/giveadminkey 1 MYCOLPL8` — gives keys for plate `MYCOLPL8` to player ID `1`.
 
+### /givenearbykey
 
+Gives the closest player keys to the closest vehicle in range.
+
+```
+/givenearbykey
+```
+
+### /vehiclekeyAdmin
+
+Opens the admin key management menu.
+
+```
+/vehiclekeyAdmin
+```
+
+---
 
 ## Player Commands
 
-1.  /proximitylocks
+### /proximitylocks
 
-    ```
-    This will enable or disable the proximity locking prefrence for the player.
-    -- Proximity locks must be enabled for this to be work
-    ```
-2.  /lockvehicle
+Toggle personal proximity locking on or off. When enabled, vehicles automatically lock when you walk away and unlock when you approach.
 
-    ```
-    This will toggle the lock to the closest vehicle, this is also a keybound command
-    available by pressing l by defualt
-    --this can be rebound at Config.KeybingSettings.LockKeyBind
-    ```
-3.  /enginetoggle
+```
+/proximitylocks
+```
 
-    ```
-    This will toggle the engine of the car a player is sitting in, this is also a keybound command 
-    available by pressing g by defualt
-    -- Engine toggle must be enabled in the config for this to work and can be changed in Config.KeybingSettings.EngineKeyBind
-    ```
-4.  /keyring
+{% hint style="info" %}
+Proximity locks must be enabled globally in the config (`Config.ProximityLocks.Enabled = true`) before players can toggle this.
+{% endhint %}
 
-    ```
-    This command is only enabled when using non item based and will show all current keys
-    held by the player, also offers sub menus to give keys etc
-    ```
-5.  /givekeys
+### /lockvehicle
 
-    ```
-    This command is only enabled when using non item based and will give keys to the
-    closest car to the closest player
-    -- This will only give the keys if the player actually has them
-    ```
-6.  /fob
+Toggle the lock on the closest vehicle. Also bound to a keybind (default: **L**).
 
-    ```
-    This command is only enabled when using non item based and will pull up the
-    keyfob ui to the closest vehicle (or vehicle ped is in) as long as the player has the keys
-    ```
+```
+/lockvehicle
+```
+
+{% hint style="info" %}
+The keybind can be changed under `Config.KeybindSettings.LockKeyBind` in the config.
+{% endhint %}
+
+### /enginetoggle
+
+Toggle the engine of the vehicle you are currently sitting in. Also bound to a keybind (default: **G**).
+
+```
+/enginetoggle
+```
+
+{% hint style="info" %}
+Engine toggle must be enabled in the config. The keybind can be changed under `Config.KeybindSettings.EngineKeyBind`.
+{% endhint %}
+
+### /keyring
+
+Opens the keyring menu, showing all keys the player currently holds. Offers sub-menus to give, drop, or manage keys.
+
+```
+/keyring
+```
+
+{% hint style="info" %}
+Only available when **not** using item-based keys (`Config.ItemBasedSettings.Enabled = false`).
+{% endhint %}
+
+### /givekeys
+
+Gives keys for the closest vehicle to the closest player nearby. The player must already have keys to the vehicle to give them.
+
+```
+/givekeys
+```
+
+{% hint style="info" %}
+Only available when **not** using item-based keys.
+{% endhint %}
+
+### /fob
+
+Opens the keyfob UI for the closest vehicle (or the vehicle the player is currently in), provided the player has keys to it.
+
+```
+/fob
+```
+
+{% hint style="info" %}
+Only available when **not** using item-based keys.
+{% endhint %}

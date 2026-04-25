@@ -1,11 +1,13 @@
 ---
-description: Heres a list of common questions and answers around the script :)
+description: Common questions and answers about MrNewbVehicleKeys.
 icon: newspaper
 ---
 
 # FAQ
 
-FAQ
+{% hint style="info" %}
+Can't find an answer here? Join the support Discord or open a ticket on Tebex.
+{% endhint %}
 
 <details>
 

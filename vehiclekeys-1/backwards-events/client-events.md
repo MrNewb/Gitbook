@@ -1,48 +1,46 @@
 ---
-description: This is a list of the available backwards client side events.
+description: Supported qb-vehiclekeys client-side backwards-compatibility events.
 ---
 
 # Client Events
 
+{% hint style="warning" %}
+These are compatibility shims for legacy scripts. For new development, use the [client exports](../vehicle-keys-exports/client-exports.md) instead.
+{% endhint %}
 
+### vehiclekeys:client:SetOwner
+
+Gives the local player ownership keys for a vehicle by plate.
 
 ```lua
-vehiclekeys:client:SetOwner
+local plate = "PLATE123"
+TriggerEvent('vehiclekeys:client:SetOwner', plate)
 ```
 
-```lua
--- plate is a string of the vehicles plate
-local plate = "platenumberhere"
-TriggerEvent('qb-vehiclekeys:client:SetOwner', plate)
-```
+### qb-vehiclekeys:client:AcquireVehicleKeys
+
+Gives the local player keys for a vehicle by plate.
 
 ```lua
-qb-vehiclekeys:client:AcquireVehicleKeys
-```
-
-```lua
--- plate is a string of the vehicles plate
-local plate = "platenumberhere"
+local plate = "PLATE123"
 TriggerEvent('qb-vehiclekeys:client:AcquireVehicleKeys', plate)
 ```
 
-```lua
-qb-vehiclekeys:client:AddKeys
-```
+### qb-vehiclekeys:client:AddKeys
+
+Adds keys for a vehicle by plate to the local player's key list.
 
 ```lua
--- plate is a string of the vehicles plate
-local plate = "platenumberhere"
+local plate = "PLATE123"
 TriggerEvent('qb-vehiclekeys:client:AddKeys', plate)
 ```
 
-```lua
-qb-vehiclekeys:client:RemoveKeys
-```
+### qb-vehiclekeys:client:RemoveKeys
+
+Removes the local player's keys for a vehicle by plate.
 
 ```lua
--- plate is a string of the vehicles plate
-local plate = "platenumberhere"
+local plate = "PLATE123"
 TriggerEvent('qb-vehiclekeys:client:RemoveKeys', plate)
 ```
 
