@@ -74,7 +74,7 @@ Both the admin and the target player receive a notification.
 
 ### /removekeys
 
-Removes a player's keys for a specific vehicle by plate. Performs a deep search including inventory items when item-based mode is on.
+Removes a player's keys for a specific vehicle by plate. Performs a deep search inside a keyring item if present.
 
 ```
 /removekeys <playerID> <plate>

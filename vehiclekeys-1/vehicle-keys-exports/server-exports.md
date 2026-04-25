@@ -67,7 +67,7 @@ local hasKeys = exports.MrNewbVehicleKeys:HaveKeys(source, netId)
 
 ```lua
 -- Removes a player's keys to a vehicle by network ID.
--- deepSearch (optional): when true, also searches the player's inventory (item-based mode only).
+-- deepSearch (optional): when true, also performs a deep search inside a keyring item if present.
 local netId = NetworkGetNetworkIdFromEntity(vehicle)
 exports.MrNewbVehicleKeys:RemoveKeys(source, netId)
 exports.MrNewbVehicleKeys:RemoveKeys(source, netId, true) -- deep search
@@ -77,7 +77,7 @@ exports.MrNewbVehicleKeys:RemoveKeys(source, netId, true) -- deep search
 
 ```lua
 -- Removes a player's keys to a vehicle by plate string.
--- deepSearch (optional): when true, also searches the player's inventory (item-based mode only).
+-- deepSearch (optional): when true, also performs a deep search inside a keyring item if present.
 exports.MrNewbVehicleKeys:RemoveKeysByPlate(source, "PLATE123")
 exports.MrNewbVehicleKeys:RemoveKeysByPlate(source, "PLATE123", true) -- deep search
 ```
