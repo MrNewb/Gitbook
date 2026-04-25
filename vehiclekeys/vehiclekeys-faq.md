@@ -1,6 +1,6 @@
 ---
-icon: newspaper
 description: Heres a list of common questions and answers around the script :)
+icon: newspaper
 ---
 
 # FAQ
@@ -11,7 +11,7 @@ FAQ
 
 <summary><em><strong>Why is the car still on when I get out?</strong></em></summary>
 
-### **This is a preference available in the config, search for**&#x20;
+#### **This is a preference available in the config, search for**
 
 ```lua
 EngineRemainsOnWhenExiting = false,									-- set this to true to keep a vehicle running when exiting it, this is a more realistic approach where youd have to turn it off when getting out or leave it on if you want to plan an escape etc.
@@ -31,7 +31,7 @@ You will need to add the exports for the key grants, please see the export docum
 
 <details>
 
-<summary>Do lockpicks work? </summary>
+<summary>Do lockpicks work?</summary>
 
 Yes, these are registered as usable items located in the init file for "lockpick" and "advancedlockpick".
 
@@ -80,9 +80,6 @@ Config.ItemBasedSettings = {
 
 <summary>Do you have backwards compatibility with qb-vehiclekeys events?</summary>
 
-Yes, All standard qb-vehiclekey events are available to use. It is highly recommended to use the direct exports for the scrips enhanced features though.&#x20;
+Yes, All standard qb-vehiclekey events are available to use. It is highly recommended to use the direct exports for the scrips enhanced features though.
 
 </details>
-
-
-

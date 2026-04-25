@@ -7,6 +7,4 @@ icon: id-card
 
 Get this today at [https://mrnewbscripts.tebex.io/](https://mrnewbscripts.tebex.io/) OR [https://github.com/MrNewb/MrNewbNameChanger](https://github.com/MrNewb/MrNewbNameChanger)
 
-
-
-<figure><img src="../.gitbook/assets/namechangevoucher (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/namechangevoucher.png" alt=""><figcaption></figcaption></figure>
