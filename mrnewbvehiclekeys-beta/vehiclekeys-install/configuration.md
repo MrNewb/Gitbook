@@ -17,13 +17,12 @@ If you are setting the script up for the first time, do the [install steps](READ
 
 | Want to change... | Jump to |
 | --- | --- |
-| Key mode, keyring behavior, or aftermarket locks | [ItemBasedSettings](#itembasedsettings) |
-| Hotwire, search, or lockpick behavior | [Hotwire](#hotwire), [SearchForKeys](#searchforkeys), [Lockpicks](#lockpicks) |
-| Locksmith pricing and services | [LockSmith](#locksmith) |
-| Dispatch alerts | [Dispatch](#dispatch) |
-| Target options on vehicles | [GlobalVehicleTargets](#globalvehicletargets) |
-| Shared fleet storage or department key holders | [KeyJobStorages](#keyjobstorages) |
-| Supporting config files | [Companion Config Files](#companion-config-files) |
+| Setup basics, key mode, and default controls | [Setup Basics](#setup-basics) |
+| Vehicle access, shared fleets, and labels | [Vehicle Access](#vehicle-access) |
+| Hotwire, search, and lockpick behavior | [Theft and Recovery](#theft-and-recovery) |
+| Locksmith, dispatch, and vehicle interactions | [Services and Interaction](#services-and-interaction) |
+| Supporting config files and migration notes | [Supporting Files](#supporting-files) |
+| Copy-paste examples and rollout checks | [Practical Examples](#practical-examples), [Final Checklist](#final-checklist) |
 
 ## Config File Map
 
@@ -36,18 +35,6 @@ If you are setting the script up for the first time, do the [install steps](READ
 | `configs/dispatch.lua` | Dispatch message payloads, icons, alert formatting, and job delivery |
 | `configs/vehicletypes.lua` | Convertible and electric vehicle classification lists |
 | `configs/parkingspots/*.lua` | Saved self-park / summon parking zones generated or maintained per location |
-
----
-
-## Manifest Provides
-
-MrNewbVehicleKeys includes optional commented `provide` lines in `fxmanifest.lua`.
-
-They are there to make migrations easier when you are replacing another key script and still have older resources expecting the previous resource name.
-
-{% hint style="info" %}
-Treat `provide` as a small migration helper. Uncomment only the aliases you need, keep new integrations on the native MrNewbVehicleKeys exports, and test any older dependent resources after switching over.
-{% endhint %}
 
 ---
 
@@ -73,7 +60,11 @@ You do not need to change everything here. Most servers only touch a handful of 
 
 ## Main Config Sections
 
-### Core Toggles
+This page is grouped by what you are actually tuning: initial setup, normal vehicle access, theft gameplay, then world services and integrations.
+
+### Setup Basics
+
+#### Core Toggles
 
 | Setting | What it does |
 | --- | --- |
@@ -84,36 +75,7 @@ You do not need to change everything here. Most servers only touch a handful of 
 `Config.DebugMode` is not a normal gameplay setting. Treat it as a troubleshooting switch.
 {% endhint %}
 
-### Hotwire
-
-`Config.Hotwire` controls the full hotwire flow: whether it is enabled, how long it takes, how many attempts a player gets, how often they can retry, whether a successful hotwire grants a permanent key, and which minigame adapter is used.
-
-Important options:
-
-| Setting | Description |
-| --- | --- |
-| `Enabled` | Master toggle for hotwiring |
-| `SyncedHotwires` | Syncs hotwire state to other clients through statebags |
-| `MaxHotwireAttempts` | Vehicle becomes immune after too many failed attempts |
-| `GiveKey` | Grants a key after a successful hotwire |
-| `Minigame.Type` | Chooses the minigame integration |
-| `RequireItem.Enabled` | Reserved / incomplete item requirement path; leave off unless you are testing it intentionally |
-
-### VehicleSettings
-
-`Config.VehicleSettings` controls how ordinary vehicle access feels once a player has permission to use the car.
-
-| Setting | Description |
-| --- | --- |
-| `LockSounds` | Enables lock and unlock sound feedback |
-| `DisableVehicleAutoStart` | Prevents GTA/FiveM from auto-starting vehicles when entered |
-| `HotwireDisabled` | Hard-disables hotwire behaviour even if the hotwire config exists |
-| `EngineRemainsOnWhenExiting` | Keeps the engine running when a player gets out |
-| `GiveKeysIfEngineRunning` | Auto-grants keys when entering a running vehicle as driver, with safeguards for temp/shared access |
-| `SuspensionBounceEnabled` | Adds a bounce response on lock / unlock |
-| `FrontTrunkVehicle` | Per-model override for vehicles that use front trunk / hood interactions |
-
-### ItemBasedSettings
+#### ItemBasedSettings
 
 This section defines whether your server uses physical key items.
 
@@ -128,19 +90,7 @@ This section defines whether your server uses physical key items.
 The optional `autoKeyring` export argument only matters when `Config.ItemBasedSettings.Enabled = true`.
 {% endhint %}
 
-### SearchForKeys
-
-`Config.SearchForKeys` controls whether abandoned or NPC vehicles can be searched for keys and loot.
-
-| Setting | Description |
-| --- | --- |
-| `Enabled` | Enables searching vehicles |
-| `SearchTime` | Progress duration |
-| `MaxSearchAttempts` | Max number of searches per vehicle |
-| `Chance` | Chance to find keys |
-| `SearchableItems` | Extra items that can be rewarded during searches |
-
-### Keybinds
+#### Keybinds
 
 `Config.Keybinds` holds the default bindings presented to players. They can still be rebound through FiveM settings.
 
@@ -158,7 +108,23 @@ These are only the defaults shown to players. They can still be changed client-s
 | `EngineToggle` | `F10` |
 | `AdjustAutoPilot` | `E` |
 
-### Blacklist
+### Vehicle Access
+
+#### VehicleSettings
+
+`Config.VehicleSettings` controls how ordinary vehicle access feels once a player has permission to use the car.
+
+| Setting | Description |
+| --- | --- |
+| `LockSounds` | Enables lock and unlock sound feedback |
+| `DisableVehicleAutoStart` | Prevents GTA/FiveM from auto-starting vehicles when entered |
+| `HotwireDisabled` | Hard-disables hotwire behaviour even if the hotwire config exists |
+| `EngineRemainsOnWhenExiting` | Keeps the engine running when a player gets out |
+| `GiveKeysIfEngineRunning` | Auto-grants keys when entering a running vehicle as driver, with safeguards for temp/shared access |
+| `SuspensionBounceEnabled` | Adds a bounce response on lock / unlock |
+| `FrontTrunkVehicle` | Per-model override for vehicles that use front trunk / hood interactions |
+
+#### Blacklist
 
 `Config.Blacklist` is one of the most important balancing sections in the whole script. It decides which vehicles bypass the normal key loop and which ones are protected from theft actions.
 
@@ -175,37 +141,11 @@ Included groups:
 | `Shared Job Models` | Job fleets that should be accessible without individually granting permanent keys |
 | `Shared Job Plates` | Plate-based version of shared job access |
 
-### Lockpicks
-
-`Config.Lockpicks` handles theft difficulty and item consumption rules.
-
-| Setting | Description |
-| --- | --- |
-| `Enabled` | Master toggle for lockpicking |
-| `BreakChance` | Chance for the lockpick to break |
-| `BreakOnSuccess` | Also consumes the lockpick on successful picks |
-| `LockpickAlarmTime` | How long the vehicle alarm sounds after a pick |
-| `LockpickItem` | Basic lockpick item name |
-| `AdvancedLockpickItem` | Advanced lockpick item name |
-| `Minigame.Type` | Selected minigame implementation |
-| `Minigame.Difficulty` | Basic difficulty |
-| `Minigame.AdvancedDifficulty` | Advanced difficulty |
-
-### LockNpcCars
-
-`Config.LockNpcCars` randomises whether NPC vehicles spawn locked.
-
-| Setting | Description |
-| --- | --- |
-| `Enabled` | Enables NPC locking |
-| `LockChance` | Percent chance an NPC vehicle is locked |
-| `ImmuneModels` | Models excluded from the NPC lock roll |
-
-### CustomCarsMissingLabels
+#### CustomCarsMissingLabels
 
 Use this section when a custom vehicle displays an ugly internal model name or no friendly label at all. Each entry maps a spawn name to a readable label.
 
-### ProximityLocking
+#### ProximityLocking
 
 `Config.ProximityLocking` enables hands-free lock behaviour.
 
@@ -217,72 +157,13 @@ Use this section when a custom vehicle displays an ugly internal model name or n
 | `UnlockDistance` | Distance to trigger unlocking while approaching |
 | `StoreGracePeriod` | Delay after exit to avoid accidental lock actions while storing vehicles |
 
-### Dispatch
-
-`Config.Dispatch` controls the gameplay side of alerts. The actual payload format lives in `configs/dispatch.lua`.
-
-| Setting | Description |
-| --- | --- |
-| `Enabled` | Master toggle |
-| `AlertChances` | Per-action chance for hotwire, lockpick, and hijack alerts |
-| `ReceiveAlerts` | Jobs that receive the dispatch event |
-
-### LockSmith
-
-`Config.LockSmith` is the economy and services hub for the script.
-
-It controls:
-
-| Area | Description |
-| --- | --- |
-| `Enabled` | Turns the locksmith service on or off |
-| `EnableKeyRing` | Enables the locksmith-side keyring service flow |
-| `EnableFobUpgrades` | Allows keyfob module upgrades to be purchased |
-| `FobUpgradesOnOwnedOnly` | Restricts upgrades to owned vehicles only |
-| `Pricing.SpareKey` | Spare key pricing |
-| `Pricing.Items` | Locksmith shop inventory like keyrings, lockpicks, and aftermarket locks |
-| `Locations` | NPC or prop-based locksmith spawn points |
-| `GlobalTargets` | Global locksmith target models |
-
-{% hint style="info" %}
-If you want players to buy and manage keyrings through the locksmith flow, this is the section to review alongside your inventory item setup.
-{% endhint %}
-
-### GlobalVehicleTargets
-
-`Config.GlobalVehicleTargets` controls the target options attached to vehicles globally.
-
-| Target | What it does |
-| --- | --- |
-| `LockVehicle` | Shows a lock option |
-| `UnLockVehicle` | Shows an unlock option |
-| `StartEngine` | Shows an engine-on option |
-| `TurnOffEngine` | Shows an engine-off option |
-| `ToggleRoof` | Shows convertible roof interaction |
-| `ForceUnlock` | Shows the force-unlock action for allowed jobs |
-
-Each entry also has its own `Enabled` toggle and `Distance` setting.
-
-### VehicleForceUnlock
-
-This section controls the job-restricted forced entry system.
-
-| Setting | Description |
-| --- | --- |
-| `Enabled` | Enables force unlock |
-| `MaxDistance` | Server-side distance validation |
-| `ProgressBar.Duration` | Action time |
-| `ProgressBar.CanCancel` | Whether the progress can be cancelled |
-| `ProgressBar.Animation` | Animation played during the action |
-| `EnabledJobs` | Jobs allowed to perform force unlock |
-
-### ParkingSpots
+#### ParkingSpots
 
 `Config.ParkingSpots` is runtime-populated data used by self-park and summon features. Leave the table itself alone unless you are intentionally managing generated parking spot files.
 
 The actual saved spot definitions live in `configs/parkingspots/*.lua`.
 
-### KeyJobStorages
+#### KeyJobStorages
 
 `Config.KeyJobStorages` controls job-only key storage stations, which are useful for fleets, impounds, emergency services, or any role that needs shared access to a pool of vehicle keys.
 
@@ -304,11 +185,137 @@ This is the section that defines key holders and deposit boxes like the `police_
 Use `KeyJobStorages` when a department should share and return keys at a world location instead of permanently duplicating them to every employee.
 {% endhint %}
 
----
+### Theft and Recovery
 
-## Companion Config Files
+#### Hotwire
 
-### overrides.lua
+`Config.Hotwire` controls the full hotwire flow: whether it is enabled, how long it takes, how many attempts a player gets, how often they can retry, whether a successful hotwire grants a permanent key, and which minigame adapter is used.
+
+Important options:
+
+| Setting | Description |
+| --- | --- |
+| `Enabled` | Master toggle for hotwiring |
+| `SyncedHotwires` | Syncs hotwire state to other clients through statebags |
+| `MaxHotwireAttempts` | Vehicle becomes immune after too many failed attempts |
+| `GiveKey` | Grants a key after a successful hotwire |
+| `Minigame.Type` | Chooses the minigame integration |
+| `RequireItem.Enabled` | Reserved / incomplete item requirement path; leave off unless you are testing it intentionally |
+
+#### SearchForKeys
+
+`Config.SearchForKeys` controls whether abandoned or NPC vehicles can be searched for keys and loot.
+
+| Setting | Description |
+| --- | --- |
+| `Enabled` | Enables searching vehicles |
+| `SearchTime` | Progress duration |
+| `MaxSearchAttempts` | Max number of searches per vehicle |
+| `Chance` | Chance to find keys |
+| `SearchableItems` | Extra items that can be rewarded during searches |
+
+#### Lockpicks
+
+`Config.Lockpicks` handles theft difficulty and item consumption rules.
+
+| Setting | Description |
+| --- | --- |
+| `Enabled` | Master toggle for lockpicking |
+| `BreakChance` | Chance for the lockpick to break |
+| `BreakOnSuccess` | Also consumes the lockpick on successful picks |
+| `LockpickAlarmTime` | How long the vehicle alarm sounds after a pick |
+| `LockpickItem` | Basic lockpick item name |
+| `AdvancedLockpickItem` | Advanced lockpick item name |
+| `Minigame.Type` | Selected minigame implementation |
+| `Minigame.Difficulty` | Basic difficulty |
+| `Minigame.AdvancedDifficulty` | Advanced difficulty |
+
+#### LockNpcCars
+
+`Config.LockNpcCars` randomises whether NPC vehicles spawn locked.
+
+| Setting | Description |
+| --- | --- |
+| `Enabled` | Enables NPC locking |
+| `LockChance` | Percent chance an NPC vehicle is locked |
+| `ImmuneModels` | Models excluded from the NPC lock roll |
+
+### Services and Interaction
+
+#### Dispatch
+
+`Config.Dispatch` controls the gameplay side of alerts. The actual payload format lives in `configs/dispatch.lua`.
+
+| Setting | Description |
+| --- | --- |
+| `Enabled` | Master toggle |
+| `AlertChances` | Per-action chance for hotwire, lockpick, and hijack alerts |
+| `ReceiveAlerts` | Jobs that receive the dispatch event |
+
+#### LockSmith
+
+`Config.LockSmith` is the economy and services hub for the script.
+
+It controls:
+
+| Area | Description |
+| --- | --- |
+| `Enabled` | Turns the locksmith service on or off |
+| `EnableKeyRing` | Enables the locksmith-side keyring service flow |
+| `EnableFobUpgrades` | Allows keyfob module upgrades to be purchased |
+| `FobUpgradesOnOwnedOnly` | Restricts upgrades to owned vehicles only |
+| `Pricing.SpareKey` | Spare key pricing |
+| `Pricing.Items` | Locksmith shop inventory like keyrings, lockpicks, and aftermarket locks |
+| `Locations` | NPC or prop-based locksmith spawn points |
+| `GlobalTargets` | Global locksmith target models |
+
+{% hint style="info" %}
+If you want players to buy and manage keyrings through the locksmith flow, this is the section to review alongside your inventory item setup.
+{% endhint %}
+
+#### GlobalVehicleTargets
+
+`Config.GlobalVehicleTargets` controls the target options attached to vehicles globally.
+
+| Target | What it does |
+| --- | --- |
+| `LockVehicle` | Shows a lock option |
+| `UnLockVehicle` | Shows an unlock option |
+| `StartEngine` | Shows an engine-on option |
+| `TurnOffEngine` | Shows an engine-off option |
+| `ToggleRoof` | Shows convertible roof interaction |
+| `ForceUnlock` | Shows the force-unlock action for allowed jobs |
+
+Each entry also has its own `Enabled` toggle and `Distance` setting.
+
+#### VehicleForceUnlock
+
+This section controls the job-restricted forced entry system.
+
+| Setting | Description |
+| --- | --- |
+| `Enabled` | Enables force unlock |
+| `MaxDistance` | Server-side distance validation |
+| `ProgressBar.Duration` | Action time |
+| `ProgressBar.CanCancel` | Whether the progress can be cancelled |
+| `ProgressBar.Animation` | Animation played during the action |
+| `EnabledJobs` | Jobs allowed to perform force unlock |
+
+## Supporting Files
+
+### Manifest Provides
+
+MrNewbVehicleKeys includes optional commented `provide` lines in `fxmanifest.lua`.
+
+They are there to make migrations easier when you are replacing another key script and still have older resources expecting the previous resource name.
+
+{% hint style="info" %}
+Treat `provide` as a small migration helper. Uncomment only the aliases you need, keep new integrations on the native MrNewbVehicleKeys exports, and test any older dependent resources after switching over.
+{% endhint %}
+
+### Companion Config Files
+
+#### overrides.lua
 
 `configs/overrides.lua` contains behaviour hooks and server-policy style settings that are easy to miss if you only look at `config.lua`.
 
@@ -324,7 +331,7 @@ Notable sections:
 | `Config.LockpickAnimationSettings` | Lockpick animation |
 | `Config.CompatabilityEvents` | Legacy compatibility event toggles |
 
-### buttons.lua
+#### buttons.lua
 
 `configs/buttons.lua` defines the keyfob's default and purchaseable actions.
 
@@ -339,19 +346,19 @@ The file controls:
 | `canPurchase` | Whether the button is a purchasable module |
 | `jobsAllowed` | Optional job lock for a button |
 
-### minigames.lua
+#### minigames.lua
 
 `configs/minigames.lua` is the adapter layer that converts your selected difficulty into the format required by each minigame resource.
 
 If you are adding or replacing a minigame integration, this is the file to edit.
 
-### dispatch.lua
+#### dispatch.lua
 
 `configs/dispatch.lua` formats outgoing alerts and maps each theft action to a message, icon, and blip setup.
 
 Use this when you want to change the actual alert text or dispatch payload, not just the chance to send one.
 
-### vehicletypes.lua
+#### vehicletypes.lua
 
 `configs/vehicletypes.lua` contains classification lists for convertibles and electric vehicles. Adjust this file when a custom car needs roof support or EV-specific behaviour.
 
