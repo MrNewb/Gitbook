@@ -19,4 +19,4 @@ Import the items and images from the `[INSTALL GUIDE]` folder into your inventor
 | **jpr-inventory** | No — images only |
 | **origen\_inventory** | Yes — see guide for required file |
 
-After adding items, copy the key images to your inventory's images folder. See [Inventory Images](../inventory-images.md) for details.
+After adding items, copy the key images to your inventory's images folder. See [Image Setup](../inventory-images.md) for details.

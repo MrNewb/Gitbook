@@ -10,76 +10,23 @@ Exports let other resources interact with MrNewbVehicleKeys directly. They are t
 If you are migrating from **qb-vehiclekeys**, the [backwards-compatible events](../backwards-events/README.md) are also supported, but using exports gives you access to additional features.
 {% endhint %}
 
-## Quick Reference
+## What Exports Are For
 
-### Server Exports
+Use exports when another script needs to talk to MrNewbVehicleKeys directly.
 
-| Export | Description |
-|---|---|
-| `GetPlayerKeys(src)` | Get all plates a player has keys for |
-| `GiveKeys(src, netid, autoKeyring?)` | Give keys by vehicle network ID, optionally auto-store in a keyring |
-| `GiveKeysByPlate(src, plate, autoKeyring?)` | Give keys by plate string, optionally auto-store in a keyring |
-| `AddKeysByPlate(src, plate, autoKeyring?)` | Alias for GiveKeysByPlate |
-| `HasKeys(src, netid)` | Check keys by network ID |
-| `HasKeysByPlate(src, plate)` | Check keys by plate |
-| `RemoveKeys(src, netid, deepSearch?)` | Remove keys by network ID, optionally searching inside keyrings |
-| `RemoveKeysByPlate(src, plate, deepSearch?)` | Remove keys by plate, optionally searching inside keyrings |
-| `TransferKey(src, targetSrc, plate)` | Transfer a key between players |
-| `DuplicateKey(src, targetSrc, plate)` | Duplicate a key to another player |
-| `UpdateKey(src, oldPlate, newPlate)` | Update a key after a plate change |
-| `SetVehicleLock(netid, lockStatus)` | Lock/unlock a vehicle (1=unlock, 2=lock) |
-| `RemoteLock(src, plate, lockStatus)` | Lock/unlock without vehicle being spawned |
-| `VerifyOwnership(src, plate)` | Check if player owns the vehicle |
-| `GetVehicleInfo(plate)` | Get stored vehicle data by plate |
-| `GrantRental(src, plate, model, netid, rentalLocation?)` | Grant rental access |
-| `RemoveRental(src, plate, netid)` | Remove rental access |
-| `SetTempKey(src, plate, durationMs)` | Grant a timed temporary key |
-| `RemoveTempKey(src, plate)` | Remove a temporary key |
-| `SetTempKeyForPlayers(players, plate, ms)` | Grant temp key to multiple players |
-| `RemoveTempKeyForPlayers(players, plate)` | Remove temp key from multiple players |
-| `SetTempKeyForJob(job, plate, ms)` | Grant temp key to all players in a job |
-| `RemoveTempKeyForJob(job, plate)` | Remove temp key from all players in a job |
-| `KeyType()` | Returns true if item-based mode is on |
-| `GetKeySystem()` | Returns the internal server system object |
+- Server exports are useful when another resource needs to manage keys, ownership checks, rentals, or other shared vehicle access logic.
+- Client exports are useful when another resource needs to interact with the local player's vehicle access features, keyfob actions, or convenience functions.
+- Events are available for backwards compatibility if you are migrating older integrations and do not want to refactor everything immediately.
 
 {% hint style="info" %}
-For item-based servers, `autoKeyring = true` makes the give-key exports place the key directly into an existing `keyring` item instead of spawning a separate `vehiclekeys` item.
+If you are using item-based keys, some give-key exports support optional arguments like `autoKeyring`, and some remove-key exports support options like `deepSearch`. Those are documented on the dedicated reference pages below.
 {% endhint %}
 
-### Client Exports
+## Where To Go Next
 
-| Export | Description |
+| Page | Use It For |
 |---|---|
-| `HasVehicleKeys(vehicle)` | Check if player has keys to a vehicle |
-| `HaveKeys(vehicle)` | Alias for HasVehicleKeys |
-| `HasKeysByPlate(plate)` | Check keys by plate |
-| `GiveKeys(vehicle)` | Give local player keys by entity |
-| `GiveKeysByPlate(plate)` | Give local player keys by plate |
-| `RemoveKeys(vehicle)` | Remove local player keys by entity |
-| `RemoveKeysByPlate(plate)` | Remove local player keys by plate |
-| `GetPlayerKeyList()` | Get all plates player has keys for |
-| `GetVehicleState()` | Check if player has keys to closest vehicle |
-| `ToggleEngine(vehicle, forceState)` | Toggle or force vehicle engine state |
-| `ToggleLock(vehicle)` | Toggle vehicle door lock |
-| `IsVehicleHotwired(vehicle)` | Check if vehicle is hotwired |
-| `SetVehicleHotwireImmune(vehicle, bool)` | Prevent/allow hotwiring |
-| `SetVehicleLockpickImmuneEntity(v, bool)` | Prevent/allow lockpicking by entity |
-| `SetVehicleLockpickImmunePlate(p, bool)` | Prevent/allow lockpicking by plate |
-| `GetTempKey()` | Get global temp key bypass state |
-| `SetTempKey(value)` / `ToggleTempKey(value)` | Set global temp key bypass |
-| `SetTempKeyByPlate(plate, ms)` | Grant timed temp key by plate |
-| `HasTempKey(plate)` | Check if player has a valid temp key |
-| `RemoveTempKeyByPlate(plate)` | Remove temp key by plate |
-| `DoesVehicleRequireKey(vehicle)` | Check if vehicle needs a key |
-| `IsSharedJobVehicle(vehicle)` | Check if accessible via job |
-| `CheckVehicleAccess(vehicle)` | Full access restriction check |
-| `OpenKeyFob(plate, buttons)` | Open the keyfob UI |
-| `StartVehicleAlarm(vehicle)` | Trigger vehicle alarm |
-| `ToggleTrunk(vehicle)` | Open/close trunk |
-| `ToggleRemoteStart(vehicle)` | Remote start engine |
-| `DanceMode(vehicle)` | Trigger dance mode |
-| `SelfParkVehicle(vehicle)` | Park at nearest parking spot |
-| `SummonVehicle(vehicle)` | Drive vehicle to player |
-| `ToggleAutoPilot(vehicle)` | Enable autopilot to GPS destination |
-| `GetKeySystem()` | Returns the internal client system object |
+| [Server Exports](server-exports.md) | Full server-side export list and usage details |
+| [Client Exports](client-exports.md) | Full client-side export list and usage details |
+| [Backwards-Compatible Events](../backwards-events/README.md) | Legacy event-based integrations and migration support |
 

@@ -10,5 +10,5 @@ icon: q
 {% hint style="info" %}
 No code changes are required for qb-inventoryv2. All item metadata including plate and vehicle name is displayed automatically.
 
-Just make sure you have added the item images from the `[INSTALL GUIDE]/images/` folder into your inventory's images directory. See [Inventory Images](../inventory-images.md).
+Just make sure you have added the item images from the `[INSTALL GUIDE]/images/` folder into your inventory's images directory. See [Image Setup](../inventory-images.md).
 {% endhint %}
