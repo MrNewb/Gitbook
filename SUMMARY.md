@@ -54,6 +54,7 @@
   * [Commands](vehiclekeys-1/vehiclekeys-faq-1.md)
   * [Snippet Examples](vehiclekeys-1/vehiclekeys-snippets/README.md)
     * [qb-vehicleshop](vehiclekeys-1/vehiclekeys-snippets/qb-vehicleshop.md)
+    * [qbx\_adminmenu](vehiclekeys-1/vehiclekeys-snippets/qb-vehicleshop-1.md)
     * [wasabi\_bridge](vehiclekeys-1/vehiclekeys-snippets/wasabi_bridge.md)
     * [qb-garages](vehiclekeys-1/vehiclekeys-snippets/qb-garages.md)
     * [jg-advancedgarage](vehiclekeys-1/vehiclekeys-snippets/jg-advancedgarage.md)

@@ -17,3 +17,5 @@ Open `jg-dealerships/config/config.lua` and set the key system to `MrNewbVehicle
 {% hint style="success" %}
 That's all that's needed. Keys will be given on vehicle purchase and test drives will use the correct grant/remove exports.
 {% endhint %}
+
+Get it here if you dont have it :) [https://jgscripts.com/scripts/dealerships](https://jgscripts.com/scripts/dealerships)

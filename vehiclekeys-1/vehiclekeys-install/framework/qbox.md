@@ -25,12 +25,11 @@ Remove or disable `qbx_vehiclekeys` before starting MrNewbVehicleKeys.
 
 ```lua
 giveVehicleKeys = function(src, plate, vehicle)
-    -- usage of the spawnvehicle return in qb shows the second return is the entity id and not a network id, we will trust that its accurate here.
-    return exports.MrNewbVehicleKeys:GiveKeys(src, vehicle)
+    return exports.MrNewbVehicleKeys:GiveKeys(src, NetworkGetNetworkIdFromEntity(vehicle))
 end,
 ```
 
----
+***
 
 ## Step 2 — setvehiclelock hook
 
@@ -46,11 +45,12 @@ end,
 
 ```lua
     setVehicleLock = function(vehicle, state)
-        --exports.qbx_vehiclekeys:SetLockState(vehicle, state)
+        local lockState = state == 'lock' and 2 or 1
+        exports.MrNewbVehicleKeys:SetVehicleLock(vehicle, lockState)
     end,
 ```
 
----
+***
 
 ## Step 3 — hasKeys hook
 
@@ -73,7 +73,7 @@ hasKeys = function(plate, vehicle)
 end,
 ```
 
----
+***
 
 ## Step 4 — Remove keys when a vehicle is deleted (/dv)
 
@@ -144,4 +144,3 @@ end)
 {% hint style="info" %}
 If you use a third-party admin menu that registers its own `/car` or `/dv` command, add the key removal export there as well using the same pattern as Step 3.
 {% endhint %}
-
