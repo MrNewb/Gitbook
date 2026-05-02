@@ -7,7 +7,7 @@ icon: key
 
 # MrNewbVehicleKeys
 
-Get this today at [https://mrnewbscripts.tebex.io/](https://mrnewbscripts.tebex.io/package/6630425)
+Get this today at [https://mrnewbscripts.tebex.io/](https://mrnewbscripts.tebex.io/category/paid-scripts)
 
 <figure><img src="../.gitbook/assets/final.png" alt=""><figcaption><p>It does key stuff</p></figcaption></figure>
 

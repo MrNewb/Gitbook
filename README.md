@@ -18,7 +18,7 @@ Whether you are doing a first-time install, updating an existing server, or chec
 | --- | --- |
 | [Discord](https://discord.com/invite/mrnewbscripts) | Support, updates, and community help |
 | [GitHub](https://github.com/MrNewb) | Repositories, releases, and public resources |
-| [Tebex](https://mrnewbscripts.tebex.io/category/2638810) | Store listings and product pages |
+| [Tebex](https://mrnewbscripts.tebex.io/category/paid-scripts) | Store listings and product pages |
 
 {% hint style="success" %}
 For support, include the script name, framework, inventory, and the exact step or issue you are stuck on. That usually cuts the back-and-forth down fast.

@@ -7,7 +7,7 @@ icon: key
 
 # \[BETA] MrNewbVehicleKeys
 
-Get it today at [https://mrnewbscripts.tebex.io/](https://mrnewbscripts.tebex.io/package/6630425)
+Get it today at [https://mrnewbscripts.tebex.io/](https://mrnewbscripts.tebex.io/category/paid-scripts)
 
 MrNewbVehicleKeys is a vehicle access system built around keys, keyrings, locksmith services, temporary access, theft mechanics, and compatibility with older integrations.
 
