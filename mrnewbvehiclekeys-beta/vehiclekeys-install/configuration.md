@@ -1,6 +1,6 @@
 ---
 description: Full configuration reference for MrNewbVehicleKeys.
-icon: settings
+icon: remote
 ---
 
 # Configuration
@@ -8,7 +8,7 @@ icon: settings
 This is the default `configs/config.lua`. Adjust the values to match your server's needs.
 
 {% hint style="info" %}
-If this is your first setup, complete the [install steps](README.md), framework setup, and inventory items before touching the config.
+If this is your first setup, complete the [install steps](./), framework setup, and inventory items before touching the config.
 {% endhint %}
 
 ```lua
