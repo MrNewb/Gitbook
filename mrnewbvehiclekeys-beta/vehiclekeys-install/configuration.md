@@ -17,6 +17,47 @@ Use this page in this order:
 2. Review `Keybinds`, `Blacklist`, and `LockSmith`.
 3. Only dig into the supporting files if you are changing integrations, buttons, dispatch payloads, or minigame behavior.
 
+## Choose Your Path
+
+If you are not sure which parts matter to you, use the path that matches your server:
+
+### Item-Based Servers
+
+Start with these sections:
+
+* `ItemBasedSettings`
+* `LockSmith`
+* `Keybinds`
+* `KeyJobStorages` if you use shared fleets
+
+### Non-Item-Based Servers
+
+Start with these sections:
+
+* `ItemBasedSettings`
+* `Keybinds`
+* `Blacklist`
+* `VehicleSettings`
+
+### Theft-Heavy Servers
+
+Start with these sections:
+
+* `Hotwire`
+* `Lockpicks`
+* `SearchForKeys`
+* `Dispatch`
+
+### Migration / Advanced Setups
+
+Only open these when you actually need them:
+
+* `Manifest Provides`
+* `overrides.lua`
+* `buttons.lua`
+* `dispatch.lua`
+* `vehicletypes.lua`
+
 ---
 
 ## Recommended First Pass
@@ -28,6 +69,18 @@ Most servers launch cleanly after reviewing these sections:
 3. `Config.Blacklist` for vehicles that should bypass or ignore theft logic.
 4. `Config.LockSmith` for spare keys, keyrings, upgrades, and pricing.
 5. `Config.Dispatch` and `Config.KeyJobStorages` if you use alerts or shared fleet access.
+
+## Safe To Ignore At First
+
+Most first-time setups do **not** need to touch these right away:
+
+* `Core Toggles`
+* `CustomCarsMissingLabels`
+* `ParkingSpots`
+* `Manifest Provides`
+* `vehicletypes.lua`
+
+Come back to those only if you have a clear reason.
 
 ---
 
@@ -74,6 +127,8 @@ The optional `autoKeyring` export argument only matters when `Config.ItemBasedSe
 | `AdjustAutoPilot` | `E` |
 
 ### Vehicle Access
+
+This section is mainly about everyday usage after the script is already working.
 
 #### VehicleSettings
 
@@ -150,6 +205,8 @@ Use `KeyJobStorages` when a department should share and return keys at a world l
 
 ### Theft and Recovery
 
+If your server does not care much about theft gameplay, you can skim this section and come back later.
+
 #### Hotwire
 
 `Config.Hotwire` controls the full hotwire flow: whether it is enabled, how long it takes, how many attempts a player gets, how often they can retry, whether a successful hotwire grants a permanent key, and which minigame adapter is used.
@@ -204,6 +261,8 @@ Important options:
 | `ImmuneModels` | Models excluded from the NPC lock roll |
 
 ### Services and Interaction
+
+This section matters most for servers using locksmiths, dispatch, target options, or job-restricted forced entry.
 
 #### Dispatch
 
@@ -264,6 +323,8 @@ This section controls the job-restricted forced entry system.
 
 ## Supporting Files
 
+These files are usually follow-up tuning, not first-pass setup.
+
 ### Manifest Provides
 
 MrNewbVehicleKeys includes optional commented `provide` lines in `fxmanifest.lua`.
@@ -311,6 +372,8 @@ Use this when you want to change the actual alert text or dispatch payload, not 
 ---
 
 ## Practical Examples
+
+If the main reference still feels dense, start here and copy one small pattern at a time.
 
 ### Disable Item-Based Keys
 

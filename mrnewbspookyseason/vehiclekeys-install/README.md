@@ -25,3 +25,5 @@ Please note, this is an example. Please do not put this in your config file like
 If you want to use the ghost hunting features you must also install [https://github.com/PenguScript/pengu\_digiscanner](https://github.com/PenguScript/pengu_digiscanner) (Hes a cool dude)
 
 [https://github.com/MrNewb/community\_bridge](https://github.com/MrNewb/community_bridge)
+
+<figure><img src="../../.gitbook/assets/install.gif" alt="Example resource folder layout showing community_bridge and the script resource in the server resources directory."><figcaption><p>Example resource layout showing <code>community_bridge</code> and this script placed in your resources folder before you sort out final start order.</p></figcaption></figure>
