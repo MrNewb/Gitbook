@@ -20,22 +20,28 @@ end
 
 ```lua
 -- Gives a player keys to a vehicle by network ID.
+-- autoKeyring (optional): when true, place the key directly into a found keyring item.
 local netId = NetworkGetNetworkIdFromEntity(vehicle)
 exports.MrNewbVehicleKeys:GiveKeys(source, netId)
+exports.MrNewbVehicleKeys:GiveKeys(source, netId, true) -- auto-add to keyring if found
 ```
 
 ### GiveKeysByPlate
 
 ```lua
 -- Gives a player keys to a vehicle by plate string.
+-- autoKeyring (optional): when true, place the key directly into a found keyring item.
 exports.MrNewbVehicleKeys:GiveKeysByPlate(source, "PLATE123")
+exports.MrNewbVehicleKeys:GiveKeysByPlate(source, "PLATE123", true) -- auto-add to keyring if found
 ```
 
 ### AddKeysByPlate
 
 ```lua
 -- Alias for GiveKeysByPlate.
+-- autoKeyring (optional): when true, place the key directly into a found keyring item.
 exports.MrNewbVehicleKeys:AddKeysByPlate(source, "PLATE123")
+exports.MrNewbVehicleKeys:AddKeysByPlate(source, "PLATE123", true) -- auto-add to keyring if found
 ```
 
 ### HasKeys
@@ -81,6 +87,10 @@ exports.MrNewbVehicleKeys:RemoveKeys(source, netId, true) -- deep search
 exports.MrNewbVehicleKeys:RemoveKeysByPlate(source, "PLATE123")
 exports.MrNewbVehicleKeys:RemoveKeysByPlate(source, "PLATE123", true) -- deep search
 ```
+
+{% hint style="info" %}
+`autoKeyring` only affects item-based key setups. When enabled, the export stores the key inside an existing `keyring` item if the player has one; otherwise it falls back to giving a normal key item.
+{% endhint %}
 
 ### UpdateKey
 
@@ -175,8 +185,10 @@ end
 ```lua
 -- Grants rental access to a player for a vehicle.
 -- netid is optional — pass it if the vehicle is already spawned.
+-- rentalLocation is optional — pass a rental location ID/name when your integration uses it.
 exports.MrNewbVehicleKeys:GrantRental(source, "PLATE123", "adder")
 exports.MrNewbVehicleKeys:GrantRental(source, "PLATE123", "adder", netId)
+exports.MrNewbVehicleKeys:GrantRental(source, "PLATE123", "adder", netId, "airport")
 ```
 
 ### RemoveRental

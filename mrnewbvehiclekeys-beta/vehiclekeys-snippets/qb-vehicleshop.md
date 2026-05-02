@@ -9,6 +9,17 @@ icon: car
 Three events in qb-vehicleshop need key exports: giving keys on test drive start, removing them when the timer expires, and removing them if the player ends the test drive early via menu. Keys are also given on vehicle purchase.
 {% endhint %}
 
+## What This Covers
+
+This page covers the two places that usually matter in dealership flows:
+
+1. Temporary keys for test drives.
+2. Permanent keys when the player buys the vehicle.
+
+{% hint style="warning" %}
+If your vehicleshop has extra return, cancel, preview, or cleanup paths, make sure those paths also remove keys where appropriate.
+{% endhint %}
+
 ## Test Drives
 
 The commented-out lines show the old qb-vehiclekeys events they replace.
@@ -95,3 +106,7 @@ RegisterNetEvent('qb-vehicleshop:client:buyShowroomVehicle', function(vehicle, p
     end, vehicle, Config.Shops[tempShop]['VehicleSpawn'], true)
 end)
 ```
+
+{% hint style="success" %}
+After patching, test both success and cleanup flows: start a test drive, let it expire, end one early, and then buy a vehicle to confirm each path grants or removes keys correctly.
+{% endhint %}

@@ -17,13 +17,13 @@ If you are migrating from **qb-vehiclekeys**, the [backwards-compatible events](
 | Export | Description |
 |---|---|
 | `GetPlayerKeys(src)` | Get all plates a player has keys for |
-| `GiveKeys(src, netid)` | Give keys by vehicle network ID |
-| `GiveKeysByPlate(src, plate)` | Give keys by plate string |
-| `AddKeysByPlate(src, plate)` | Alias for GiveKeysByPlate |
+| `GiveKeys(src, netid, autoKeyring?)` | Give keys by vehicle network ID, optionally auto-store in a keyring |
+| `GiveKeysByPlate(src, plate, autoKeyring?)` | Give keys by plate string, optionally auto-store in a keyring |
+| `AddKeysByPlate(src, plate, autoKeyring?)` | Alias for GiveKeysByPlate |
 | `HasKeys(src, netid)` | Check keys by network ID |
 | `HasKeysByPlate(src, plate)` | Check keys by plate |
-| `RemoveKeys(src, netid)` | Remove keys by network ID |
-| `RemoveKeysByPlate(src, plate)` | Remove keys by plate |
+| `RemoveKeys(src, netid, deepSearch?)` | Remove keys by network ID, optionally searching inside keyrings |
+| `RemoveKeysByPlate(src, plate, deepSearch?)` | Remove keys by plate, optionally searching inside keyrings |
 | `TransferKey(src, targetSrc, plate)` | Transfer a key between players |
 | `DuplicateKey(src, targetSrc, plate)` | Duplicate a key to another player |
 | `UpdateKey(src, oldPlate, newPlate)` | Update a key after a plate change |
@@ -31,7 +31,7 @@ If you are migrating from **qb-vehiclekeys**, the [backwards-compatible events](
 | `RemoteLock(src, plate, lockStatus)` | Lock/unlock without vehicle being spawned |
 | `VerifyOwnership(src, plate)` | Check if player owns the vehicle |
 | `GetVehicleInfo(plate)` | Get stored vehicle data by plate |
-| `GrantRental(src, plate, model, netid)` | Grant rental access |
+| `GrantRental(src, plate, model, netid, rentalLocation?)` | Grant rental access |
 | `RemoveRental(src, plate, netid)` | Remove rental access |
 | `SetTempKey(src, plate, durationMs)` | Grant a timed temporary key |
 | `RemoveTempKey(src, plate)` | Remove a temporary key |
@@ -41,6 +41,10 @@ If you are migrating from **qb-vehiclekeys**, the [backwards-compatible events](
 | `RemoveTempKeyForJob(job, plate)` | Remove temp key from all players in a job |
 | `KeyType()` | Returns true if item-based mode is on |
 | `GetKeySystem()` | Returns the internal server system object |
+
+{% hint style="info" %}
+For item-based servers, `autoKeyring = true` makes the give-key exports place the key directly into an existing `keyring` item instead of spawning a separate `vehiclekeys` item.
+{% endhint %}
 
 ### Client Exports
 

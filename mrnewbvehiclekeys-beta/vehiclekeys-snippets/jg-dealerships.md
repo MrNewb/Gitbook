@@ -8,6 +8,10 @@ icon: j
 `jg-dealerships` has native support for multiple key systems. No code changes are required — simply point the key system config option to `MrNewbVehicleKeys` and the script will call the correct exports automatically.
 {% endhint %}
 
+{% hint style="success" %}
+This is another native-config integration, so it is cleaner and safer than editing source files unless you have a heavily customized version.
+{% endhint %}
+
 ## Configuration
 
 Open `jg-dealerships/config/config.lua` and set the key system to `MrNewbVehicleKeys`:
@@ -18,4 +22,8 @@ Open `jg-dealerships/config/config.lua` and set the key system to `MrNewbVehicle
 That's all that's needed. Keys will be given on vehicle purchase and test drives will use the correct grant/remove exports.
 {% endhint %}
 
-Get it here if you dont have it :) [https://jgscripts.com/scripts/dealerships](https://jgscripts.com/scripts/dealerships)
+{% hint style="info" %}
+After changing the config, test both a test drive and a completed purchase so you confirm temporary and permanent key flows both work as expected.
+{% endhint %}
+
+Get it here if you don't have it: [https://jgscripts.com/scripts/dealerships](https://jgscripts.com/scripts/dealerships)

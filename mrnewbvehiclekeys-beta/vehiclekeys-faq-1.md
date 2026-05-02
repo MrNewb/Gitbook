@@ -5,13 +5,15 @@ icon: message-smile
 
 # Commands
 
+Use this page as the quick-reference sheet for admin actions, player keybinds, and a few keyring-specific behavior notes.
+
 ## Quick Reference
 
 ### Admin Commands
 
 | Command | Usage | Description |
 | --- | --- | --- |
-| `/vehiclekeyAdmin` | `/vehiclekeyAdmin` | Open the admin key management menu |
+| `/vehiclekeyadmin` | `/vehiclekeyadmin` | Open the admin key management menu |
 | `/givekeys` | `/givekeys <playerID> <plate>` | Give a player keys by plate |
 | `/removekeys` | `/removekeys <playerID> <plate>` | Remove a player's keys by plate |
 | `/listkeys` | `/listkeys <playerID>` | Print a player's key list to console |
@@ -35,6 +37,10 @@ icon: message-smile
 All keybinds can be rebound in GTA V's **Key Bindings** settings under the **FiveM** tab.
 {% endhint %}
 
+{% hint style="success" %}
+If you only need the day-to-day controls, the two sections above are enough. The rest of this page is the detailed breakdown.
+{% endhint %}
+
 ---
 
 ## Admin Commands
@@ -43,12 +49,16 @@ All keybinds can be rebound in GTA V's **Key Bindings** settings under the **Fiv
 Admin commands require the player to be flagged as an admin. This is configured via `Config.Admin.IsPlayerAdmin` in `overrides.lua`.
 {% endhint %}
 
-### /vehiclekeyAdmin
+### /vehiclekeyadmin
 
 Opens the in-game admin menu for key management.
 
+{% hint style="info" %}
+This is the fastest way to troubleshoot missing keys, test temporary access, and create parking spots for advanced keyfob actions.
+{% endhint %}
+
 ```
-/vehiclekeyAdmin
+/vehiclekeyadmin
 ```
 
 | Menu Option | Description |
@@ -92,13 +102,17 @@ Prints a list of all keys held by the target player to the server console.
 
 Revokes keys for a specific plate from **all currently online players** at once. Useful when a vehicle is sold, stolen, or repossessed.
 
+{% hint style="warning" %}
+This affects every online player with access to that plate, so it is best used as a corrective admin action rather than a routine tool.
+{% endhint %}
+
 ```
 /revokekeys <plate>
 ```
 
 ### /devmode
 
-Toggles the global temporary key bypass on your client. Same as the **Toggle Temp Key** option inside `/vehiclekeyAdmin`.
+Toggles the global temporary key bypass on your client. Same as the **Toggle Temp Key** option inside `/vehiclekeyadmin`.
 
 ```
 /devmode
@@ -134,5 +148,23 @@ Scans the player's inventory for key items belonging to vehicles no longer prese
 
 {% hint style="info" %}
 Only available when using item-based keys. Has a cooldown (default: 30 seconds) configurable under `Config.ClearOldKeys.CooldownTime` in `overrides.lua`.
+{% endhint %}
+
+---
+
+## Keyring Notes
+
+{% hint style="info" %}
+When using item-based keys, the server exports `GiveKeys`, `GiveKeysByPlate`, and `AddKeysByPlate` all support an optional third argument: `autoKeyring`.
+{% endhint %}
+
+If `autoKeyring` is set to `true`, the script will look for a `keyring` item in the player's inventory and place the new key directly into that keyring's metadata instead of giving the player a standalone `vehiclekeys` item.
+
+If `autoKeyring` is omitted or `false`, the script uses the normal behavior and gives the player a regular key item.
+
+Key removal works the same way in reverse when you opt into deep searching. `RemoveKeys` and `RemoveKeysByPlate` accept an optional `deepSearch` argument. When set to `true`, removal also checks inside the player's keyring item.
+
+{% hint style="success" %}
+For item-based servers, this is the cleanest way to keep player inventories tidy when keys are granted from garages, dealerships, rentals, or admin tools.
 {% endhint %}
 

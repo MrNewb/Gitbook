@@ -9,6 +9,17 @@ icon: garage
 These are the two places in qb-garages that need key exports added: when a vehicle is taken out of the garage (give keys) and when the garage deletes a vehicle (remove keys). Adapt the pattern to whichever garage script you use.
 {% endhint %}
 
+## What This Covers
+
+This snippet handles the two most important garage moments:
+
+1. Give the player keys when the vehicle is taken out.
+2. Remove those keys when the vehicle is force-deleted or cleaned up.
+
+{% hint style="success" %}
+If your garage script has separate spawn, store, impound, or cleanup flows, apply the same pattern to each one rather than only patching the examples below.
+{% endhint %}
+
 ## Granting Keys on Garage Takeout
 
 Add `exports.MrNewbVehicleKeys:GiveKeys(veh)` after the vehicle is spawned and the player is seated. The commented-out line shows the old qb-vehiclekeys event it replaces.
@@ -56,4 +67,8 @@ local function CheckPlayers(vehicle)
     QBCore.Functions.DeleteVehicle(vehicle)
 end
 ```
+
+{% hint style="info" %}
+If your server uses item-based keys, this cleanup step is especially important so old key items do not linger after the garage removes the vehicle entity.
+{% endhint %}
 

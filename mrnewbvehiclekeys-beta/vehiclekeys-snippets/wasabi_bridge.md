@@ -11,6 +11,10 @@ This shows how to add MrNewbVehicleKeys support to `wasabi_bridge`. You will als
 Edit `wasabi_bridge/customize/client/carkeys.lua`. Both the give and remove functions need updating.
 {% endhint %}
 
+{% hint style="warning" %}
+This is a bridge integration. Make sure the surrounding Wasabi config is also set to use the bridge path you are editing, otherwise these changes may never be called.
+{% endhint %}
+
 **Find this:**
 
 ```lua
@@ -58,3 +62,7 @@ function WSB.removeCarKeys(plate, _model, _vehicle)
     end
 end
 ```
+
+{% hint style="success" %}
+Once updated, test both directions: a flow that grants keys through the bridge and a flow that removes keys, so you know the bridge is routing both actions correctly.
+{% endhint %}
