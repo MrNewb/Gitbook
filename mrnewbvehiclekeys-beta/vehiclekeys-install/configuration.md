@@ -5,56 +5,29 @@ icon: settings
 
 # Configuration
 
-MrNewbVehicleKeys is heavily configurable. Most day-to-day setup lives in `configs/config.lua`, while a few feature-specific files extend that base config.
+Most servers only need to adjust a small part of this page. Start with your key mode, keybinds, locksmith settings, and any shared fleet setup, then come back for the deeper sections if needed.
 
-This page is the practical map of what each section controls, what you are most likely to change first, and where the supporting config files fit in.
+If this is your first setup, finish the [install steps](README.md), framework setup, and inventory items first.
 
-{% hint style="info" %}
-If you are setting the script up for the first time, do the [install steps](README.md), finish your framework and inventory setup, then come back here to tune behaviour.
-{% endhint %}
+## Start Here
 
-## Quick Navigation
+Use this page in this order:
 
-| Want to change... | Jump to |
-| --- | --- |
-| Setup basics, key mode, and default controls | [Setup Basics](#setup-basics) |
-| Vehicle access, shared fleets, and labels | [Vehicle Access](#vehicle-access) |
-| Hotwire, search, and lockpick behavior | [Theft and Recovery](#theft-and-recovery) |
-| Locksmith, dispatch, and vehicle interactions | [Services and Interaction](#services-and-interaction) |
-| Supporting config files and migration notes | [Supporting Files](#supporting-files) |
-| Copy-paste examples and rollout checks | [Practical Examples](#practical-examples), [Final Checklist](#final-checklist) |
-
-## Config File Map
-
-| File | What it controls |
-| --- | --- |
-| `configs/config.lua` | Main gameplay configuration, locksmith, targeting, dispatch, keyring, key storage, and most feature toggles |
-| `configs/overrides.lua` | Admin permissions, validation hooks, command toggles, animations, compatibility events, and sound behaviour |
-| `configs/buttons.lua` | Keyfob button layout, purchaseable modules, pricing, and action bindings |
-| `configs/minigames.lua` | Minigame adapter logic and difficulty handling |
-| `configs/dispatch.lua` | Dispatch message payloads, icons, alert formatting, and job delivery |
-| `configs/vehicletypes.lua` | Convertible and electric vehicle classification lists |
-| `configs/parkingspots/*.lua` | Saved self-park / summon parking zones generated or maintained per location |
+1. Pick whether your server is item-based or non-item-based in `ItemBasedSettings`.
+2. Review `Keybinds`, `Blacklist`, and `LockSmith`.
+3. Only dig into the supporting files if you are changing integrations, buttons, dispatch payloads, or minigame behavior.
 
 ---
 
 ## Recommended First Pass
 
-If you only want to get the script production-ready fast, these are the sections most servers change first:
+Most servers launch cleanly after reviewing these sections:
 
-{% hint style="info" %}
-You do not need to change everything here. Most servers only touch a handful of these sections before the first production launch.
-{% endhint %}
-
-| Priority | Section | Why it matters |
-| --- | --- | --- |
-| 1 | `Config.ItemBasedSettings` | Decides whether keys are physical items or stored virtually |
-| 2 | `Config.Keybinds` | Changes the default player controls |
-| 3 | `Config.Blacklist` | Defines vehicles that do not need keys, cannot be hotwired, or are shared by job |
-| 4 | `Config.LockSmith` | Controls spare keys, keyrings, aftermarket locks, prices, and locksmith NPCs |
-| 5 | `Config.Dispatch` | Controls whether police/EMS style alerts fire during theft actions |
-| 6 | `Config.GlobalVehicleTargets` | Enables or disables target options for lock, unlock, engine, roof, and force unlock |
-| 7 | `Config.KeyJobStorages` | Adds job-only key holders / deposit boxes for fleet or duty vehicles |
+1. `Config.ItemBasedSettings` for physical keys vs virtual keys.
+2. `Config.Keybinds` for default player controls.
+3. `Config.Blacklist` for vehicles that should bypass or ignore theft logic.
+4. `Config.LockSmith` for spare keys, keyrings, upgrades, and pricing.
+5. `Config.Dispatch` and `Config.KeyJobStorages` if you use alerts or shared fleet access.
 
 ---
 
@@ -66,14 +39,12 @@ This page is grouped by what you are actually tuning: initial setup, normal vehi
 
 #### Core Toggles
 
+These are the small global switches most servers leave alone after first setup.
+
 | Setting | What it does |
 | --- | --- |
 | `Config.DebugMode` | Developer-focused debug output. Leave this off unless you are troubleshooting a ticketed issue. |
 | `Config.EnableUI` | Enables the custom UI features, including the keyfob interface where applicable. |
-
-{% hint style="warning" %}
-`Config.DebugMode` is not a normal gameplay setting. Treat it as a troubleshooting switch.
-{% endhint %}
 
 #### ItemBasedSettings
 
@@ -86,17 +57,11 @@ This section defines whether your server uses physical key items.
 | `EnableAftermarketLocks` | Enables the aftermarket lock item workflow |
 | `IncludePlayerNameInKeyDescription` | Adds the owner name into generated key metadata |
 
-{% hint style="info" %}
 The optional `autoKeyring` export argument only matters when `Config.ItemBasedSettings.Enabled = true`.
-{% endhint %}
 
 #### Keybinds
 
 `Config.Keybinds` holds the default bindings presented to players. They can still be rebound through FiveM settings.
-
-{% hint style="info" %}
-These are only the defaults shown to players. They can still be changed client-side in FiveM key bindings.
-{% endhint %}
 
 | Setting | Default |
 | --- | --- |
@@ -181,9 +146,7 @@ This is the section that defines key holders and deposit boxes like the `police_
 | `label` | Friendly interaction label |
 | `blip` | Optional map blip configuration |
 
-{% hint style="success" %}
 Use `KeyJobStorages` when a department should share and return keys at a world location instead of permanently duplicating them to every employee.
-{% endhint %}
 
 ### Theft and Recovery
 
@@ -269,9 +232,7 @@ It controls:
 | `Locations` | NPC or prop-based locksmith spawn points |
 | `GlobalTargets` | Global locksmith target models |
 
-{% hint style="info" %}
 If you want players to buy and manage keyrings through the locksmith flow, this is the section to review alongside your inventory item setup.
-{% endhint %}
 
 #### GlobalVehicleTargets
 
@@ -309,9 +270,7 @@ MrNewbVehicleKeys includes optional commented `provide` lines in `fxmanifest.lua
 
 They are there to make migrations easier when you are replacing another key script and still have older resources expecting the previous resource name.
 
-{% hint style="info" %}
-Treat `provide` as a small migration helper. Uncomment only the aliases you need, keep new integrations on the native MrNewbVehicleKeys exports, and test any older dependent resources after switching over.
-{% endhint %}
+Treat `provide` as a small migration helper. Uncomment only the aliases you need, keep new integrations on the native MrNewbVehicleKeys exports, and test older dependent resources after switching over.
 
 ### Companion Config Files
 
@@ -319,32 +278,19 @@ Treat `provide` as a small migration helper. Uncomment only the aliases you need
 
 `configs/overrides.lua` contains behaviour hooks and server-policy style settings that are easy to miss if you only look at `config.lua`.
 
-Notable sections:
+Main things in this file:
 
-| Section | What it controls |
-| --- | --- |
-| `Config.Admin` | Admin command access check |
-| `Config.ClearOldKeys` | Enables and rate-limits `/clearoldkeys` |
-| `Config.ValidationChecks` | Hook points for custom restrictions like cuffed/dead checks |
-| `Config.VehicleSounds` | Horn/flash feedback tuning |
-| `Config.AnimationSettings` | General keyfob animation |
-| `Config.LockpickAnimationSettings` | Lockpick animation |
-| `Config.CompatabilityEvents` | Legacy compatibility event toggles |
+* `Config.Admin` for admin command access
+* `Config.ClearOldKeys` for `/clearoldkeys`
+* `Config.ValidationChecks` for custom restrictions
+* `Config.VehicleSounds` and animation settings for feedback tuning
+* `Config.CompatabilityEvents` for legacy compatibility hooks
 
 #### buttons.lua
 
 `configs/buttons.lua` defines the keyfob's default and purchaseable actions.
 
-The file controls:
-
-| Setting | Description |
-| --- | --- |
-| `EnabledButtons` | Buttons available by default |
-| `ExtraButtons` | Purchaseable or optional modules |
-| `action_id` | Export-safe ID used by integrations |
-| `price` | Locksmith upgrade cost |
-| `canPurchase` | Whether the button is a purchasable module |
-| `jobsAllowed` | Optional job lock for a button |
+This is where you change default buttons, purchasable modules, action IDs, pricing, and any job restrictions on button access.
 
 #### minigames.lua
 
@@ -409,20 +355,10 @@ This only applies to item-based servers and will store the key inside an existin
 
 Before calling your setup finished, verify these points:
 
-| Check | Why |
-| --- | --- |
-| Your framework and inventory are installed first | Prevents bridge auto-detection issues |
-| Item-based vs non-item-based mode is intentional | Affects almost every workflow in the script |
-| Locksmith prices match your economy | Prevents progression from feeling broken |
-| Shared job models / plates are configured | Stops emergency and service jobs from being over-granted keys |
-| Dispatch jobs are correct | Prevents alerts going nowhere |
-| KeyJobStorages are configured if you use shared fleets | Gives departments a clean key handoff workflow |
-| Keybinds are sensible for your player base | Avoids conflicts with other heavily used scripts |
+* Your framework and inventory are installed first.
+* Item-based vs non-item-based mode is intentional.
+* Locksmith prices match your economy.
+* Shared job models, shared plates, or `KeyJobStorages` are configured if you use fleets.
+* Dispatch jobs and keybinds make sense for your server.
 
-{% hint style="warning" %}
-When changing multiple interconnected systems at once, test one workflow at a time: spawn or retrieve a vehicle, verify access, test lock/unlock, then test theft mechanics, locksmith actions, and job storage separately.
-{% endhint %}
-
-{% hint style="info" %}
-If you ask for support on a config issue, include the exact section you changed and whether the server is item-based or non-item-based. That usually narrows the answer down immediately.
-{% endhint %}
+When testing, do one workflow at a time: spawn or retrieve a vehicle, verify access, test lock and unlock, then move on to theft mechanics, locksmith actions, and job storage. If you need support, include the section you changed and whether the server is item-based or non-item-based.

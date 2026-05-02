@@ -5,43 +5,33 @@ icon: taco
 
 # MOTD
 
-Hi, I'm MrNewb! This site is dedicated to providing clear documentation for my FiveM scripts. You'll find everything from installation guides to using exports, along with a few FAQs to help you get started. Enjoy exploring!
+Welcome to the documentation hub for MrNewb Scripts.
 
-## Start Here
+This site is where you will find install guides, config help, exports, snippets, and setup notes for my FiveM resources.
 
-| Looking for... | Jump to |
-| --- | --- |
-| Vehicle key docs | [MrNewbVehicleKeys](vehiclekeys/README.md) |
-| Beta vehicle key docs | [MrNewbVehicleKeys Beta](mrnewbvehiclekeys-beta/README.md) |
-| Prescriptions docs | [MrNewbPrescriptions](mrnewbprescriptions/README.md) |
-| Full docs index | [Table of Contents](SUMMARY.md) |
-
-## Links
-
-Join the discord here: [discord.gg/mrnewbscripts](https://discord.com/invite/mrnewbscripts)
-
-Check out my GitHub here: [https://github.com/MrNewb](https://github.com/MrNewb)
-
-See my Tebex here: [https://mrnewbscripts.tebex.io/category/2638810](https://mrnewbscripts.tebex.io/category/2638810)&#x20;
-
-## Featured Integrations
+Whether you are doing a first-time install, updating an existing server, or checking a specific integration, the goal here is simple: get you to the right answer quickly.
 
 {% hint style="info" %}
-Some scripts already have clean integration paths with MrNewb docs or direct support built into their own config options. Where that exists, the docs link you to the cleanest route instead of forcing manual edits.
+If you are not sure where to begin, open the [Table of Contents](SUMMARY.md) and jump to the script you are working on.
 {% endhint %}
 
-| Integration | Best use case | Docs |
-| --- | --- | --- |
-| **JG Advanced Garage** | Native key-system selection for garage retrieval and storage flows | [Advanced Garage Example](mrnewbvehiclekeys-beta/vehiclekeys-snippets/jg-advancedgarage.md) |
-| **JG Dealerships** | Native key-system selection for purchases and test drives | [Dealerships Example](mrnewbvehiclekeys-beta/vehiclekeys-snippets/jg-dealerships.md) |
-| **Wasabi Bridge** | Bridge-based key routing where give/remove calls need to be redirected | [wasabi_bridge Example](mrnewbvehiclekeys-beta/vehiclekeys-snippets/wasabi_bridge.md) |
+## Quick Links
+
+| Link | Use it for |
+| --- | --- |
+| [Discord](https://discord.com/invite/mrnewbscripts) | Support, updates, and community help |
+| [GitHub](https://github.com/MrNewb) | Repositories, releases, and public resources |
+| [Tebex](https://mrnewbscripts.tebex.io/category/2638810) | Store listings and product pages |
+| [Table of Contents](SUMMARY.md) | Browse all available docs |
+
+{% hint style="info" %}
+Use the [Table of Contents](SUMMARY.md) to browse each script by name, then jump into install steps, exports, FAQs, or snippets from there.
+{% endhint %}
 
 {% hint style="success" %}
-When a script already exposes a built-in key-system option, prefer that route first. It is usually cleaner, easier to maintain, and safer than patching source files manually.
+For support, include the script name, framework, inventory, and the exact step or issue you are stuck on. That usually cuts the back-and-forth down fast.
 {% endhint %}
 
-{% hint style="info" %}
-If you want another script or framework highlighted here, add or polish the integration docs first so the section stays useful rather than becoming a loose list of names.
-{% endhint %}
+Thanks for using MrNewb Scripts.
 
 ***

@@ -12,18 +12,11 @@ This guide gets the base resource running in the right order before you move on 
 1. Set the correct resource start order.
 2. Follow the framework guide for your core.
 3. Add the required inventory items and images.
-4. Review the configuration guide and tune the features you want enabled.
-5. Test spawning, locking, unlocking, and key granting before going live.
+4. Review the configuration guide, then test the full vehicle flow before going live.
 
 ## Configuration
 
-After completing the base install, review the [Configuration Guide](configuration.md). It documents the main `config.lua` sections, supporting config files, keyring behaviour, locksmith setup, dispatch, and job-based key storage via `KeyJobStorages`.
-
-It also covers the optional `provide` aliases in `fxmanifest.lua` if you need MrNewbVehicleKeys to answer compatibility exports for older key-system resource names during migration.
-
-{% hint style="info" %}
-Use the install docs to get the script online first. Use the configuration guide after that to shape gameplay, pricing, keyring behavior, dispatch alerts, and job storage.
-{% endhint %}
+After the base install is working, use the [Configuration Guide](configuration.md) to tune gameplay, pricing, keyring behavior, dispatch, and shared key storage. It also covers the optional `provide` aliases in `fxmanifest.lua` for migration setups.
 
 ## Start Order
 
@@ -51,6 +44,4 @@ ensure <your_garage>            # e.g. qb-garages, ox_garage
 Once the script starts cleanly, test one complete workflow end to end: retrieve or spawn a vehicle, confirm access, lock and unlock it, and then verify key removal or storage behavior.
 {% endhint %}
 
-{% hint style="info" %}
-If you still need support after this page, share your framework, inventory, start order, and whether you are using item-based keys when asking in Discord or opening a ticket.
-{% endhint %}
+If you still need support after this page, share your framework, inventory, start order, and whether you are using item-based keys when asking for help.

@@ -9,7 +9,7 @@ icon: key
 
 Get it today at [https://mrnewbscripts.tebex.io/](https://mrnewbscripts.tebex.io/package/6630425)
 
-MrNewbVehicleKeys is a full vehicle access system built around keys, keyrings, locksmith services, temporary access, vehicle theft mechanics, and backwards-compatibility for older integrations.
+MrNewbVehicleKeys is a vehicle access system built around keys, keyrings, locksmith services, temporary access, theft mechanics, and compatibility with older integrations.
 
 <figure><img src="../.gitbook/assets/final.png" alt=""><figcaption><p>It does key stuff</p></figcaption></figure>
 
@@ -30,33 +30,19 @@ Video Showcase
 
 ## Features
 
-* **Item-based or non-item-based keys** — works with or without a physical key item in your inventory
-* **Keyfob UI** — fully customisable keyfob interface with configurable buttons and purchasable upgrades
-* **Proximity locking** — vehicles auto-lock/unlock as you walk away or approach
-* **Lockpicking & hotwiring** — built-in minigames with per-vehicle immunity controls
-* **Key search** — players can search vehicles for keys and other configured items
-* **Keyring** — players can manage, share, transfer, and optionally auto-store keys in-game
-* **Temporary keys** — grant time-limited access by player, list, or job
-* **Rental system** — integrate rental vehicle workflows with automatic key management
-* **Locksmith shop** — players can purchase spare keys and keyfob upgrades at configured locations
-* **Aftermarket locks** — vehicles can have aftermarket lock systems installed
-* **Key job storage** — job-specific keyholder NPCs/props where players can store and retrieve keys
-* **Carjacking** — configurable carjacking system with dispatch alerting
-* **Dispatch alerts** — configurable alerts to job players on hotwire, lockpick, and hijack events
-* **NPC car locking** — randomly locks NPC vehicles with a configurable chance
-* **Global vehicle targets** — ox\_target / qb-target integration for lock, unlock, engine, and roof actions on all vehicles
-* **Vehicle force unlock** — allowed jobs (e.g. police, mechanic) can force-unlock any vehicle
-* **Autopilot / self-park / summon** — advanced keyfob actions
-* **qb-vehiclekeys backwards compatibility** — drop-in replacement for existing scripts
+* **Key systems** — item-based or non-item-based keys, keyrings, temporary keys, and sharing
+* **Vehicle interaction** — locking, unlocking, engine control, proximity locking, and keyfob actions
+* **Theft gameplay** — lockpicking, hotwiring, key searching, carjacking, and NPC car locking
+* **Server services** — locksmith shops, aftermarket locks, rentals, and key job storage
+* **Integrations** — dispatch support, vehicle targets, self-park/summon, and backwards compatibility
+* **Migration friendly** — suitable for replacing older vehicle key scripts without rewriting everything on day one
 
 {% hint style="info" %}
-This is the BETA branch of the script. Check the [FAQ](vehiclekeys-faq.md), [install guide](vehiclekeys-install/README.md), and [configuration guide](vehiclekeys-install/configuration.md) if you run into issues.
+This is the BETA branch of the script. Start with the [install guide](vehiclekeys-install/README.md), then use the [configuration guide](vehiclekeys-install/configuration.md) and [FAQ](vehiclekeys-faq.md) as needed.
 {% endhint %}
 
 {% hint style="success" %}
 If you are replacing an older vehicle key script, start with the install guide first, then review the configuration page before touching third-party integrations.
 {% endhint %}
 
-{% hint style="info" %}
-Need help after working through the docs? Bring your framework, inventory, key mode, and a short description of the issue into the support Discord or Tebex ticket so the problem can be diagnosed quickly.
-{% endhint %}
+Need help after working through the docs? Bring your framework, inventory, key mode, and a short description of the issue into Discord or your Tebex ticket.
